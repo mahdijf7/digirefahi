@@ -1,0 +1,75 @@
+@font-face {
+    font-family: IRANSans;
+    src: url('./assets/fonts/IRANSans.eot');
+    src: url('./assets/fonts/IRANSans.eot?#iefix') format('embedded-opentype'),
+        url('./assets/fonts/IRANSans.woff2') format('woff2'), url('./assets/fonts/IRANSans.woff') format('woff'),
+        url('./assets/fonts/IRANSans.ttf') format('truetype'), url('./assets/fonts/IRANSans.svg#IRANSans') format('svg');
+}
+
+.editFiled {
+    min-height: 2rem !important;
+    word-wrap: break-word !important;
+    padding: 0px 1.5rem !important;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: IranSans;
+}
+html,
+body {
+    background-color: white !important;
+    font-size: 65.5%;
+    --swiper-navigation-size: 1.9rem;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+
+    @media screen and (max-width: 1400px) {
+        // font-size: 58%;
+        font-size: 62.5%;
+    }
+    @media screen and (min-width: 1600px) {
+        font-size: 70%;
+    }
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.wallet-head-typo {
+    position: absolute;
+    top: 3%;
+    right: 3%;
+}
+.label-number-dashboard {
+    font-size: 1.4rem;
+
+    align-self: center;
+}
+.one-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+// .date-picker {
+//   padding: 0;
+//   margin: 0;
+
+//   & .rmdp-container {
+//     display: inline !important;
+//   }
+// }
+// ::-webkit-scrollbar {
+//     display: none;
+// }

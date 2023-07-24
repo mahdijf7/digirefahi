@@ -1,0 +1,27 @@
+.logotype {
+    white-space: nowrao !important;
+}
+
+.profileMenuLink {
+    cursor: pointer !important;
+}
+.headerDropDown {
+    /* height: 89px; */
+    min-width: 16.6rem;
+    display: flex;
+    flex-direction: column;
+    &::before {
+        // content: '';
+        // position: absolute;
+        // top: -20px;
+        // left: 0;
+        // width: 20px;
+        // height: 20px;
+        // background-color: red;
+        // z-index: 1000;
+    }
+}
+
+.MuiAutocomplete-listbox {
+    padding: 0 !important;
+}

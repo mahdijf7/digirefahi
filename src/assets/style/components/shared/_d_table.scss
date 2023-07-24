@@ -1,0 +1,58 @@
+.d-table-wrapper {
+    box-shadow: none;
+    overflow-x: unset!important;
+}
+.d-table {
+    border-spacing: 0;
+    border-collapse: separate !important;
+    border-radius: 6px;
+    border: 1px solid rgba(217, 217, 217, 1);
+    overflow: hidden;
+}
+
+/* Apply a border to the right of all but the last column */
+.d-table th:not(:first-child),
+.d-table td:not(:first-child) {
+    border-right: 1px solid rgba(217, 217, 217, 1);
+}
+
+/* Apply a border to the bottom of all but the last row */
+.d-table > thead > tr:not(:last-child) > th,
+.d-table > thead > tr:not(:last-child) > td,
+.d-table > tbody > tr:not(:last-child) > th,
+.d-table > tbody > tr:not(:last-child) > td,
+.d-table > tr:not(:last-child) > td,
+.d-table > tr:not(:last-child) > th,
+.d-table > thead:not(:last-child),
+.d-table > tbody:not(:last-child) {
+    border-bottom: 1px solid rgba(217, 217, 217, 1);
+}
+
+.d-table > tbody > tr:last-child > td {
+    border-bottom: none !important;
+}
+
+
+.chart-label-22 tspan{
+    font-size: 22px;
+}
+.chart-label-14 tspan{
+    font-size: 14px;
+}
+.chart-label-bold tspan{
+    font-weight: 600;
+}
+.box--isLoading{
+    position: relative;
+    z-index: 1;
+    &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($color: #fff, $alpha: 0.6);
+        z-index: 1;
+    }
+}

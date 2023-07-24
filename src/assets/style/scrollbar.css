@@ -1,0 +1,27 @@
+/* Scrollable Container */
+.scrollable-container {
+    overflow-y: scroll; /* Ensure the element is scrollable */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #D9D9D9; /* For Firefox */
+}
+
+.scrollable-container::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 5px;
+    border: 0.8px solid #D9D9D9;
+    background: #FFF;
+}
+
+.scrollable-container::-webkit-scrollbar-track {
+    width: 10px;
+    border-radius: 5px;
+    border: 0.8px solid #D9D9D9;
+    background: #FFF;
+
+}
+
+.scrollable-container::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    border: 0.8px solid #D9D9D9;
+    background: #EEE;
+}

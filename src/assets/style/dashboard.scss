@@ -1,0 +1,84 @@
+.chart-color1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 1rem 1rem 0;
+    width: 5%;
+    height: 3.1rem;
+    border-left: 0.1rem solid #eeeeee;
+}
+.chart-color {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 1rem 1rem 0;
+    width: 5%;
+    height: 4.2rem;
+    border-left: 0.1rem solid #eeeeee;
+}
+.wallet-amount-typo {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 26%;
+    left: 33.5%;
+}
+.banner-typo {
+    position: absolute;
+    top: 5%;
+    right: 4%;
+}
+.box-img-grid {
+    & img {
+        width: 3rem;
+        height: 3.2rem;
+        margin-bottom: 1rem;
+    }
+}
+.notification-typo {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+}
+.wallet-title-typo {
+    position: absolute;
+    top: 3.5%;
+    right: 10%;
+}
+.counter-title-typo {
+    position: absolute;
+    top: -19%;
+    right: 1rem;
+}
+.title-top {
+    position: absolute;
+    top: -5rem;
+}
+.img {
+    border-radius: 1.4rem;
+    width: 100%;
+}
+.slider-container {
+    // background-color: rebeccapurple;
+    width: 90%;
+}
+.slider-item {
+    // border-radius: 1.4rem !important;
+    width: 9.2rem !important;
+    height: 5.2rem !important;
+    border-radius: 1.4rem !important;
+}
+
+.swiper-button-next {
+    color: #0877bd !important;
+}
+.swiper-button-prev {
+    color: #0877bd !important;
+}
+.img-banner {
+    width: 100%;
+    height: auto;
+    border-radius: 1.4rem;
+}

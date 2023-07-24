@@ -1,0 +1,32 @@
+.welcome-img-box {
+  & img:nth-child(1) {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    width: 65%;
+  }
+  & img:nth-child(2) {
+    position: absolute;
+    top: 8%;
+    left: 0;
+    width: 65%;
+  }
+  & h2 {
+    position: absolute;
+    top: 15%;
+    right: 7%;
+  }
+  & h4 {
+    position: absolute;
+    top: 40%;
+    right: 7%;
+  }
+
+  & button {
+    position: absolute;
+    top: 50%;
+    right: 7%;
+  }
+}
+.date-picker {
+}
