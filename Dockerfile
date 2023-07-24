@@ -1,24 +1,14 @@
-# Set the base image to node:16-alpine
-FROM node:16-alpine as build
-
-# Specify where our app will live in the container
+FROM node:16.14.0 AS build
 WORKDIR /app
-
-# Copy the React App to the container
-COPY . /app/
-
-# Prepare the container for building React
+COPY package*.json ./
 RUN npm install
-# We want the production version
+COPY . .
+# RUN npm test - if you want to test before to build
 RUN npm run build
 
-# Prepare nginx
-FROM nginx:1.16.0-alpine
-COPY --from=build /app/build /usr/share/nginx/html
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx/nginx.conf /etc/nginx/conf.d
-
-# Fire up nginx
+FROM nginx:alpine AS prod
+WORKDIR /usr/share/nginx/html
+COPY --from=build /app/build/ .
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
-
+# run nginx with global directives and daemon off
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
