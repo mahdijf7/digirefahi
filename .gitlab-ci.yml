@@ -17,7 +17,7 @@ deploy:
     - build
   script:
     - echo deployment started
-    - docker rm -f digirefahi-front || true  # Stop the previous container if running (ignore errors if it doesn't exist)
+    - docker rm -f digirefahi-front-dev || true  # Stop the previous container if running (ignore errors if it doesn't exist)
     - docker run -d -p 30011:80 --name digirefahi-front-dev digirefahi-front-dev:latest  # Start the new container with the latest image and specific name
     #- docker exec edchlast unzip /app/packages.zip
   after_script:  
