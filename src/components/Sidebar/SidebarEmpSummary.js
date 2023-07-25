@@ -32,7 +32,7 @@ const SidebarEmpSummary = () => {
                 </Box>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                3
+                 
                 <Box sx={{ display: 'grid', flex: 1 }}>
                     {chart && <Typography sx={{ fontSize: '12px' }}>{chart.name}</Typography>}
 

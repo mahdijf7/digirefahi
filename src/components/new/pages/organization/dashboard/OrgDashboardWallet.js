@@ -94,25 +94,29 @@ const OrgDashboardWallet = ({ wallet }) => {
                         }}
                     />
                 </Box>
-                <Box
-                    sx={{
-                        background: 'rgba(221, 225, 230, 0.4)',
-                        borderRadius: '10px',
-                        mt: '25px',
-                        p: '0 10px',
-                        height: '42px',
-                        color: '#0877BD',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    }}>
-                    <Typography sx={{ fontSize: '12px' }}>
-                        تاکنون { ((100 * amount) / total).toFixed(0)}% از کیف پول خود را مصرف کرده اید.
-                    </Typography>
-                </Box>
+                {total > 0 && (
+                    <Box
+                        sx={{
+                            background: 'rgba(221, 225, 230, 0.4)',
+                            borderRadius: '10px',
+                            mt: '25px',
+                            mb: '48px',
+                            p: '0 10px',
+                            height: '42px',
+                            color: '#0877BD',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }}>
+                        <Typography sx={{ fontSize: '12px' }}>
+                            تاکنون {((100 * amount) / total).toFixed(0)}% از کیف پول خود را مصرف کرده اید.
+                        </Typography>
+                    </Box>
+                )}
+
                 <Button
                     startIcon={<AddCardIcon sx={{ m: '0 0 0 10px' }} />}
-                    sx={{ fontSize: '14px', mt: '48px' }}
+                    sx={{ fontSize: '14px', mt: 'auto' }}
                     variant="contained"
                     size="large"
                     component={Link}

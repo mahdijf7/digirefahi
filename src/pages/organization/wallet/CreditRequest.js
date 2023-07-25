@@ -145,7 +145,7 @@ const CreditRequest = ({onClose, requestId, onSave}) => {
                                 </TableHead>
                                 <TableBody>
                                     <TableRow style={{backgroundColor: '#ffffff',}}>
-                                        <TableCell style={{...tableCellStyle,width:"60%"}}>{request.description}</TableCell>
+                                        <TableCell style={{...tableCellStyle,width:"60%"}}>{request.company_description}</TableCell>
                                         <TableCell style={tableCellStyle}>     {<Button variant='contained' style={request.file ? downloadBtnStyle : downloadDisableBtnStyle} disabled={!request.file}
                                                                                         startIcon={request.file ? <DownloadIcon/> : <DownloadDisableIcon/>}>
                                             <a href={request.file} style={request.file ? downloadLinkStyle: downloadLinkDisableStyle} target="_blank" download>

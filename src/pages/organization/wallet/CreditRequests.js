@@ -129,7 +129,7 @@ const CreditRequests = () => {
 
         const formData = new FormData();
         if (values?.price) formData.append('price', values.price);
-        if (values?.description) formData.append('description', values.description);
+        if (values?.description) formData.append('company_description', values.description);
         if (values?.file) formData.append('file', values.file);
 
         await OrganizationService.createCreditRequest(formData)

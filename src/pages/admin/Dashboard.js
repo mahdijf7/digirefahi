@@ -501,7 +501,7 @@ const Dashboard = () => {
                                     data={{
                                         title: 'جدید ترین درخواست های خدمت سازمانی',
                                         linkText: 'مشاهده همه',
-                                        linkPath: '/app/admin/management-requests/organizational-service-request',
+                                        linkPath: '/app/admin/management-requests/organization-requests',
                                     }}>
                                     <DLoadingWrapper loading={loading}>
                                         <>
