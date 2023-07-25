@@ -8,7 +8,7 @@ build:
     - build
   script:
     - echo build started    
-    - docker build -t digirefahi-front:latest .
+    - docker build -t digirefahi-front-dev:latest .
     - echo build is done
 
 deploy:
@@ -18,7 +18,7 @@ deploy:
   script:
     - echo deployment started
     - docker rm -f digirefahi-front || true  # Stop the previous container if running (ignore errors if it doesn't exist)
-    - docker run -d -p 30011:80 --name digirefahi-front digirefahi-front:latest  # Start the new container with the latest image and specific name
+    - docker run -d -p 30011:80 --name digirefahi-front-dev digirefahi-front-dev:latest  # Start the new container with the latest image and specific name
     #- docker exec edchlast unzip /app/packages.zip
   after_script:  
     #- docker exec edchlast chmod +x ./dockerrun.sh
