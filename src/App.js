@@ -43,6 +43,7 @@ import EventManagement from 'pages/organization/EventManagement';
 import OrganizationServicesRequest from 'pages/organization/services/ServicesRequests';
 import OrganizationBasicServiceFilter from 'pages/organization/services/ServiceFilter';
 import OrganizationServiceDetail from 'pages/organization/services/OrganizationServiceDetail';
+import OrganizationOrderHistory from 'pages/organization/Reports/OrderHistory/OrganizationOrderHistory';
 
 // Admin Pages
 // import ManegementBanner from './pages/admin/management-banner/index';
@@ -55,7 +56,7 @@ import RequestsManagement from 'pages/admin/RequestsManagement/index';
 import EventsManagement from 'pages/admin/EventsManagement';
 import TempAdminEmployees from 'pages/admin/Employees';
 import ServiceList from './pages/admin/service-management/service-list';
-import ServiceEditing from './pages/admin/service-management/service-editing/index'; 
+import ServiceEditing from './pages/admin/service-management/service-editing/index';
 import ServiceFilterPage from 'pages/admin/service-management/service-filter';
 import AdminCompanies from 'pages/admin/companies/Index';
 import AdminCompaniesInfo from 'pages/admin/companies/Info';
@@ -102,7 +103,7 @@ const App = () => {
         ADMIN: '/app/admin/',
         COMPANY: '/app/organization/dashboard/',
         SUPPLIER: '/app/supplier/dashboard/',
-        EMPLOYEE: '/app/dashboard/', 
+        EMPLOYEE: '/app/dashboard/',
     };
 
     function LoggedInOnly() {
@@ -160,6 +161,7 @@ const App = () => {
                 <Route path="services/basic-service-filter" element={<OrganizationBasicServiceFilter />} />
                 <Route path="services/service-requests/:serviceId" element={<OrganizationServiceDetail_Org />} />
                 <Route path="allocation" element={<OrganizationAllocation />} />
+                <Route path="reports/orders-history" element={<OrganizationOrderHistory />} />
             </Route>
 
             <Route path="/app/admin" element={<RouteGuard checkWelcome={false} Component={Layout} />}>

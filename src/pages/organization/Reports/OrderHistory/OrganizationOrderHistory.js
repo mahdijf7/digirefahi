@@ -1,19 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Grid, TableCell, TableHead, TableRow, TableBody, Box } from '@mui/material';
-import { useTranslation } from 'react-i18next';
-import { Formik, Form } from 'formik';
 
 // Utils
-import adminService from 'service/api/adminService';
+import organizationService from 'service/api/organization.service';
 
 // Components
 import DTableWrapper from 'components/new/shared/DTable/DTableWrapper';
 import DTableEmpty from 'components/new/shared/DTable/DTableEmpty';
 import DPagination from 'components/new/shared/DPagination/Index';
 import DLoadingWrapper from 'components/new/shared/DLoadingWrapper';
-import OrderHistoryDetail from './OrdersHistoryDetail';
-import CustomInputSearch from 'components/Common/Form/CustomInputSearch';
-import OrdersHistoryInvoiceDetail from './OrdersHistoryInvoiceDetail';
+import OrderHistoryDetail from 'layout/Admin/Reports/OrdersHistory/OrdersHistoryDetail';
+import OrdersHistoryInvoiceDetail from 'layout/Admin/Reports/OrdersHistory/OrdersHistoryInvoiceDetail';
 import DashboardCard from 'components/Common/Card/DashboardCard';
 import Breadcrumb from 'components/new/shared/BreadCrumb/Index';
 
@@ -22,12 +19,12 @@ import theme from 'assets/theme';
 import DBox from 'components/new/shared/DBox';
 
 const breadCrumbLinks = [
-    { path: '/app/admin/', title: 'پیشخوان' },
-    { path: '/app/admin/reports/orders-history/', title: 'گزارشات' },
+    { path: '/app/organization/dashboard', title: 'پیشخوان' },
+    { path: '/app/organization/reports/orders-history/', title: 'گزارشات' },
     { title: 'تاریخچه سفارشات' },
 ];
 
-const OrdersHistory = () => {
+function OrganizationOrderHistory(props) {
     const [loading, setLoading] = useState({ initial: true, refresh: false });
     const [filters, setFilters] = useState({ page: 1, name: '' });
     const [totalPage, setTotalPage] = useState(1);
@@ -37,17 +34,6 @@ const OrdersHistory = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const { t } = useTranslation();
-
-    const Initial_Values = {
-        name: '',
-    };
-    const handleSubmit = async (values) => {
-        console.log(values, 'VALUES OF SEARCH ');
-        const name = values.name;
-
-        setFilters({ ...filters, name });
-    };
     const onSelectDetail = (id) => {
         console.log(id, 'GETTING THE ID');
         setInvoiceId(id);
@@ -82,7 +68,7 @@ const OrdersHistory = () => {
             ...loading,
             refresh: true,
         });
-        await adminService
+        await organizationService
             .get(`orders?${queryString}`)
             .then((res) => {
                 console.log(res.data.data);
@@ -92,7 +78,6 @@ const OrdersHistory = () => {
                 });
 
                 setTransactions(res.data.data);
-                // setTransactions(data);
                 setTotalPage(res.data.meta.last_page);
             })
             .catch((err) => {
@@ -107,7 +92,6 @@ const OrdersHistory = () => {
     useEffect(() => {
         getTransactions();
     }, [filters]);
-
     return (
         <DashboardCard pt="2rem" sx={styleCard}>
             <Breadcrumb links={breadCrumbLinks} />
@@ -115,19 +99,6 @@ const OrdersHistory = () => {
             <DLoadingWrapper loading={loading.initial}>
                 <DBox sx={wrapperStyles} className={loading.refresh && 'box--isLoading'}>
                     <Grid container>
-                        <Grid item xs={12}>
-                            <Formik initialValues={Initial_Values} onSubmit={handleSubmit}>
-                                <Form>
-                                    <Box width="31%" mb="1.3rem">
-                                        {/* <CustomInputSearch
-                                        sx={{ width: '100% !important' }}
-                                        placeholder={'جستجوی فاکتورها'}
-                                        name="name"
-                                    /> */}
-                                    </Box>
-                                </Form>
-                            </Formik>
-                        </Grid>
                         <Grid item xs={12}>
                             <DTableWrapper>
                                 <TableHead>
@@ -174,7 +145,7 @@ const OrdersHistory = () => {
                 </DBox>
             </DLoadingWrapper>
             <OrdersHistoryInvoiceDetail
-                apiService={adminService}
+                apiService={organizationService}
                 invoiceId={invoiceId}
                 open={open}
                 handleOpen={handleOpen}
@@ -182,7 +153,10 @@ const OrdersHistory = () => {
             />
         </DashboardCard>
     );
-};
+}
+
+export default OrganizationOrderHistory;
+
 const styleCard = {
     '& button': {
         boxShadow: 'none !important',
@@ -205,5 +179,3 @@ const tableHeadStyle = {
     fontSize: '1.5rem',
     fontFamily: `"IRANSans", "sans-serif", "serif"`,
 };
-
-export default OrdersHistory;

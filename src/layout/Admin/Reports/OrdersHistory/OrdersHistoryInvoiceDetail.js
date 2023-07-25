@@ -9,17 +9,16 @@ import DDialogHeader from 'components/new/shared/DDialog/DDialogHeader';
 import EmployeeInfoDialogInvoicdDetailT1 from 'components/new/pages/admin/employees/EmployeeInfoDialogInvoice/EmployeeInfoDialogInvoicdDetailT1';
 import EmployeeInfoDialogInvoicdDetailT2 from 'components/new/pages/admin/employees/EmployeeInfoDialogInvoice/EmployeeInfoDialogInvoicdDetailT2';
 
-import adminService from 'service/api/adminService';
 import TableBuyerInfo from './TableBuyerInfo';
 
-function BasicModal({ invoiceId, open, handleOpen, handleClose, data }) {
+function BasicModal({ invoiceId, open, handleOpen, handleClose, data, apiService }) {
     const { t } = useTranslation();
     const [loading, setLoading] = useState(false);
     const [transactions, setTransaction] = useState({});
 
     const getTransactions = async (invoiceId) => {
         setLoading(true);
-        await adminService
+        await apiService
             .get(`orders/${invoiceId}`)
             .then((res) => {
                 setLoading(false);

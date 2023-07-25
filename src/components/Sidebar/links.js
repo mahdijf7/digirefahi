@@ -182,6 +182,19 @@ export default {
             icon: <ManageEvents />,
         },
         {
+            key: 'admin-reports',
+            title: 'گزارش‌ها',
+            icon: <SidebarReportsIcon />,
+            startPath: '/app/organization/reports/orders-history/',
+            children: [
+                {
+                    key: 'admin-reports-orders',
+                    title: 'تاریخچه سفارشات',
+                    path: '/app/organization/reports/orders-history/',
+                },
+            ],
+        },
+        {
             key: 'organization-support',
             title: 'پشتیبانی',
             path: '/app/organization/management-tickets',
