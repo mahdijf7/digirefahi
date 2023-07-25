@@ -1,6 +1,7 @@
 FROM node:16.14.0 AS build
 WORKDIR /app
 COPY package*.json ./
+RUN npm install env-cmd
 RUN npm install
 COPY . .
 # RUN npm test - if you want to test before to build
