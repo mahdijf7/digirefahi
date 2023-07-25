@@ -1,0 +1,35 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  tags:
+    - build
+  script:
+    - echo build started    
+    - docker build -t digirefahi-front-dev:latest .
+    - echo build is done
+
+deploy:
+  stage: deploy
+  tags:
+    - build
+  script:
+    - echo deployment started
+    - docker rm -f digirefahi-front-dev || true  # Stop the previous container if running (ignore errors if it doesn't exist)
+    - docker run -d -p 30011:80 --name digirefahi-front-dev digirefahi-front-dev:latest  # Start the new container with the latest image and specific name
+    #- docker exec edchlast unzip /app/packages.zip
+  after_script:  
+    #- docker exec edchlast chmod +x ./dockerrun.sh
+    #- docker exec edchlast ./dockerrun.sh
+    # - docker exec edchlast dotnet build
+    # - docker exec edchlast dotnet run --project /app/EDCH.ClientApp/EDCH.ClientApp.csproj -launch-profile profile1 &
+    - echo deployment is done
+
+# Run build and deploy stages when changes are made to the dev branch
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "development"'
+      changes:
+        - '**/*'
