@@ -22,3 +22,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.env.development
+.env.demo
+.env.production
+Dockerfile
+.gitlab-ci.yml

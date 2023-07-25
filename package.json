@@ -60,7 +60,10 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "svg": "svgr -d src/assets/icone/svg src/assets/icone"
+        "svg": "svgr -d src/assets/icone/svg src/assets/icone",
+        "build:development": "env-cmd -f .env.development react-scripts build",
+        "build:demo": "env-cmd -f .env.demo react-scripts build",
+        "build:production": "env-cmd -f .env.production react-scripts build"
     },
     "eslintConfig": {
         "extends": [
