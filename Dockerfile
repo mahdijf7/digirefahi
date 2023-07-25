@@ -4,7 +4,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 # RUN npm test - if you want to test before to build
-RUN npm run build
+RUN npm run build:development
 
 FROM nginx:alpine AS prod
 WORKDIR /usr/share/nginx/html
