@@ -83,6 +83,11 @@ class OrganizationService {
         return useFetch.get(`${URL_PREFIX}categories${data ? `?${data}` : ''}`);
     }
 
+    // Charts
+    getCharts(filters, headers) {
+        return useFetch.get(`${URL_PREFIX}charts?${filters}`, headers);
+    }
+
     // Group
     getGroups(filters, headers) {
         return useFetch.get(`${URL_PREFIX}groups?${filters}`, headers);

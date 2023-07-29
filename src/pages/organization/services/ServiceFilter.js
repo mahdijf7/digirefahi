@@ -33,6 +33,7 @@ import theme from 'assets/theme';
 import DSnackbar from 'components/new/shared/DSnackbar';
 import '../../../assets/style/scrollbar.css';
 import SelectGroup from "../../../components/new/pages/organization/serviceManagement/serviceFilter/SelectGroup";
+import SelectChart from "../../../components/new/pages/organization/serviceManagement/serviceFilter/SelectChart";
 import SelectCategories from "../../../components/new/pages/organization/serviceManagement/serviceFilter/SelectCategories";
 import {getErrorForSnackbar} from "../../../utils/helpers";
 import {reloadResources} from "i18next";
@@ -61,17 +62,17 @@ const OrganizationBasicServiceFilter = () => {
     });
 
     const [services, setServices] = useState([]);
-    const [groups, setGroups] = useState([]);
+    const [charts, setCharts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [categoryServices, setCategoryServices] = useState([]);
-    const [groupServices, setGroupServices] = useState([]);
+    const [chartServices, setChartServices] = useState([]);
     const [filters, setFilters] = useState({ page: 1, per_page: 500, type: 'BASIC' });
     const [filtersChanged, setFiltersChanged] = useState(false);
     const [totalPage, setTotalPage] = useState(1);
 
     const [selectedTableItems, setSelectedTableItems] = useState([]);
-    const [selectedGroup, setSelectedGroup] = useState({});
-    const [selectedGroupChanged, setSelectedGroupChanged] = useState(false);
+    const [selectedChart, setSelectedChart] = useState({});
+    const [selectedChartChanged, setSelectedChartChanged] = useState(false);
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [selectedCategoriesChanged, setSelectedCategoriesChanged] = useState(false);
     const [snackBarData, setSnackBarData] = useState({
@@ -98,9 +99,9 @@ const OrganizationBasicServiceFilter = () => {
             setSelectedTableItems(services.map((item) => item));
         }
     };
-    const handleGroupCheckboxChange = (item) => {
-        setSelectedGroup(item);
-        setSelectedGroupChanged(true);
+    const handleChartCheckboxChange = (item) => {
+        setSelectedChart(item);
+        setSelectedChartChanged(true);
     };
     const handleCategoryCheckboxChange = (categories) => {
         const toggleCategory = (category, isChecked) => {
@@ -145,7 +146,7 @@ const OrganizationBasicServiceFilter = () => {
         for (const category of categoryList) {
             let isParentAdded = parentAdded;
 
-            for (const service of groupServices) {
+            for (const service of chartServices) {
                 if (category.id === service.category.id) {
                     matches.push(category);
                     isParentAdded = true;
@@ -164,13 +165,14 @@ const OrganizationBasicServiceFilter = () => {
         return matches;
     }
 
-    const getGroups = async () => {
+    const getCharts = async () => {
         const queryString = new URLSearchParams();
         queryString.append('per_page', filters.per_page);
         await organizationService
-            .getGroups(queryString.toString())
+            .getCharts(queryString.toString())
             .then((res) => {
-                setGroups(res.data.data);
+                console.log(res.data.data.charts);
+                setCharts(res.data.data.charts);
                 setLoading({ ...loading, initial: false, refresh: false });
             })
             .catch((err) => {
@@ -204,13 +206,13 @@ const OrganizationBasicServiceFilter = () => {
                 });
             });
     };
-    const getServicesFilteredByGroup = async () => {
-        if(isSelectedGroupEmpty()) return { reload: false, data: [] };
+    const getServicesFilteredByChart = async () => {
+        if(isSelectedChartEmpty()) return { reload: false, data: [] };
         const queryString = new URLSearchParams();
         queryString.append('page', filters.page);
         queryString.append('per_page', filters.per_page);
         queryString.append('type', filters.type);
-        queryString.append('group_ides[0]', selectedGroup.id);
+        queryString.append('chart_id', selectedChart.id);
         try {
             const res = await organizationService.getServices(queryString.toString());
             if (Number(res.data.meta.last_page) > 1) {
@@ -263,7 +265,7 @@ const OrganizationBasicServiceFilter = () => {
     const submitServices = async () => {
         setLoading({...loading, submit: true});
         const queryString = new URLSearchParams();
-        queryString.append('group_id', selectedGroup.id);
+        queryString.append('chart_id', selectedChart.id);
         selectedTableItems.forEach((service, index) => {
             queryString.append('service_ides[' + index + ']', service.id);
         });
@@ -274,11 +276,11 @@ const OrganizationBasicServiceFilter = () => {
                 setSnackBarData({
                     show: true,
                     data: {
-                        text: 'خدمات گروه بروزرسانی شد.',
+                        text: 'خدمات چارت سازمانی بروزرسانی شد.',
                         type: 'success',
                     },
                 });
-                reloadGroupServices();
+                reloadChartServices();
             })
             .catch((err) => {
                 const errorMsg = err?.response?.data?.data && getErrorForSnackbar(err.response.data.data);
@@ -293,11 +295,11 @@ const OrganizationBasicServiceFilter = () => {
             });
     };
     const submitList = async () => {
-        if(Object.keys(selectedGroup).length === 0) {
+        if(Object.keys(selectedChart).length === 0) {
             return setSnackBarData({
                 show: true,
                 data: {
-                    text: 'سازمان را انتخاب کنید!',
+                    text: 'چارت سازمانی را انتخاب کنید!',
                     type: 'error',
                 },
             });
@@ -323,8 +325,8 @@ const OrganizationBasicServiceFilter = () => {
         await submitServices();
     };
 
-    const isSelectedGroupEmpty = () => {
-        return Object.keys(selectedGroup).length === 0;
+    const isSelectedChartEmpty = () => {
+        return Object.keys(selectedChart).length === 0;
     }
     const isSelectedCategoriesEmpty = () => {
         return selectedCategories.length === 0;
@@ -338,7 +340,7 @@ const OrganizationBasicServiceFilter = () => {
     const reloadServices = async () => {
         clearTable();
 
-        if(isSelectedGroupEmpty()) {
+        if(isSelectedChartEmpty()) {
             setLoading({ ...loading, refresh: false });
             return;
         }
@@ -358,7 +360,7 @@ const OrganizationBasicServiceFilter = () => {
         let diff = [];
 
         for (let service of categoryServices) {
-            let found = groupServices.some(item => item.id === service.id);
+            let found = chartServices.some(item => item.id === service.id);
 
             if (found) {
                 similar.push(service);
@@ -379,7 +381,7 @@ const OrganizationBasicServiceFilter = () => {
             setLoading({ ...loading, refresh: false });
             return;
         }
-        if(isSelectedGroupEmpty()) return [];
+        if(isSelectedChartEmpty()) return [];
         setLoading({ ...loading, refresh: true });
         let data = await getServicesFilteredByCategory();
         if(data.reload)
@@ -387,23 +389,23 @@ const OrganizationBasicServiceFilter = () => {
 
         setCategoryServices(data.data);
     }
-    const reloadGroupServices = async () => {
-        if(isSelectedGroupEmpty()) return[];
+    const reloadChartServices = async () => {
+        if(isSelectedChartEmpty()) return[];
         setLoading({ ...loading, refresh: true });
-        let data = await getServicesFilteredByGroup();
+        let data = await getServicesFilteredByChart();
         if(data.reload)
-            data = await getServicesFilteredByGroup();
-        setGroupServices(data.data);
+            data = await getServicesFilteredByChart();
+        setChartServices(data.data);
     }
 
     useEffect(() => {
-        getGroups();
+        getCharts();
         getCategories();
     }, []);
     useEffect(() => {
         if(filtersChanged) {
             setFiltersChanged(false);
-            reloadGroupServices();
+            reloadChartServices();
         }
     }, [filtersChanged]);
     useEffect(() => {
@@ -413,14 +415,14 @@ const OrganizationBasicServiceFilter = () => {
         }
     }, [selectedCategoriesChanged]);
     useEffect(() => {
-        if(selectedGroupChanged) {
-            setSelectedGroupChanged(false);
-            reloadGroupServices();
+        if(selectedChartChanged) {
+            setSelectedChartChanged(false);
+            reloadChartServices();
         }
-    }, [selectedGroupChanged]);
+    }, [selectedChartChanged]);
     useEffect(() => {
         reloadServices();
-    }, [groupServices]);
+    }, [chartServices]);
     useEffect(() => {
         appendCategoryServices();
     }, [categoryServices]);
@@ -433,12 +435,19 @@ const OrganizationBasicServiceFilter = () => {
             <DLoadingWrapper loading={loading.initial}>
                 <Grid container spacing={2}>
                     <Grid item xs={3.3} mt="32px">
-                        <SelectGroup
+                        <SelectChart
                             loading={loading}
-                            groups={groups}
-                            selectedGroup={selectedGroup}
-                            handleGroupCheckboxChange={handleGroupCheckboxChange}
+                            charts={charts}
+                            selectedChart={selectedChart}
+                            handleChartCheckboxChange={handleChartCheckboxChange}
                         />
+
+                        {/*<SelectGroup*/}
+                        {/*    loading={loading}*/}
+                        {/*    groups={groups}*/}
+                        {/*    selectedGroup={selectedGroup}*/}
+                        {/*    handleGroupCheckboxChange={handleGroupCheckboxChange}*/}
+                        {/*/>*/}
 
                         <SelectCategories
                             loading={loading}
@@ -459,7 +468,7 @@ const OrganizationBasicServiceFilter = () => {
                                         padding: '17px 30px 0px 30px',
                                         color: '#fff',
                                         fontSize: '16px'}}>
-                                        <DTableHeader title={selectedGroup.name || '---'}>
+                                        <DTableHeader title={selectedChart.name || '---'}>
                                             {/*<LoadingButton*/}
                                             {/*    variant="outlined"*/}
                                             {/*    loading={loading.excel}*/}
@@ -574,7 +583,7 @@ const OrganizationBasicServiceFilter = () => {
                                                         </TableRow>
                                                     ))
                                                 ) : (
-                                                    <DTableEmpty message={'هر دو فیلتر گروه و دسته‌بندی را انتخاب کنید'}/>
+                                                    <DTableEmpty message={'هر دو فیلتر چارت سازمانی و دسته‌بندی را انتخاب کنید'}/>
                                                 )
                                             )}
                                         </TableBody>
