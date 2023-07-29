@@ -86,6 +86,7 @@ function NewService(props) {
             then: yup.string().required('کد تخفیف الزامی است'),
             otherwise: yup.string().nullable().notRequired(),
         }),
+        ticket_type_id: yup.object().nullable().required('نوع بلیط الزامی است'),
         order_limit: yup.string('').required('سقف قابل استفاده الزامی است'),
         long_description: yup.string('').required('توضیخات الزامی است'),
         terms_of_use: yup.string('').required('شرایط استفاده الزامی است'),

@@ -94,6 +94,7 @@ function ConfirmService({
                 <Grid item xs={4} sx={{ mt: hasError ? '1rem' : '0' }}>
                     <DAutoComplete
                         name="ticket_type_id"
+                        isDisabled
                         formControlStyle={autocompleteStyle}
                         buttonProps={{ label: 'کد تخفیف' }}
                         placeholder={'انتخاب کنید'}
