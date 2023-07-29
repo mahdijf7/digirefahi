@@ -37,7 +37,7 @@ const AdminAddEmployeeDialog = ({ onClose, onSave }) => {
         national_code: '',
         mobile: '',
         chart: [''],
-        company_id: ''
+        company_id: '',
     };
 
     const handleSubmit = async (values, actions) => {
@@ -90,7 +90,7 @@ const AdminAddEmployeeDialog = ({ onClose, onSave }) => {
                         <Grid container spacing={2} sx={{ padding: '20px 40px 0 40px' }}>
                             <Grid item xs={12}>
                                 <Formik
-                                enableReinitialize={true}
+                                    enableReinitialize={true}
                                     initialValues={addFormInitialValues}
                                     validationSchema={Validation_Schema}
                                     onSubmit={handleSubmit}>
@@ -208,11 +208,15 @@ const AdminAddEmployeeDialog = ({ onClose, onSave }) => {
                                                                                                 ) {
                                                                                                     arrayHelpers.pop();
                                                                                                 }
-                                                                                                (selectedValue.child ||
-                                                                                                    (selectedValue.children_all &&
-                                                                                                        selectedValue.children_all
-                                                                                                            .length > 0)) &&
-                                                                                                    arrayHelpers.push('');
+
+                                                                                                if (selectedValue) {
+                                                                                                    (selectedValue.child ||
+                                                                                                        (selectedValue.children_all &&
+                                                                                                            selectedValue
+                                                                                                                .children_all
+                                                                                                                .length > 0)) &&
+                                                                                                        arrayHelpers.push('');
+                                                                                                }
                                                                                             }}
                                                                                         />
                                                                                     </Grid>

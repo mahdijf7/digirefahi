@@ -187,11 +187,13 @@ const OrgAddEmployeeDialog = ({ onClose, onSave }) => {
                                                                                         ) {
                                                                                             arrayHelpers.pop();
                                                                                         }
-                                                                                        (selectedValue.child ||
-                                                                                            (selectedValue.children_all &&
-                                                                                                selectedValue.children_all
-                                                                                                    .length > 0)) &&
-                                                                                            arrayHelpers.push('');
+                                                                                        if (selectedValue) {
+                                                                                            (selectedValue.child ||
+                                                                                                (selectedValue.children_all &&
+                                                                                                    selectedValue.children_all
+                                                                                                        .length > 0)) &&
+                                                                                                arrayHelpers.push('');
+                                                                                        }
                                                                                     }}
                                                                                 />
                                                                             </Grid>
