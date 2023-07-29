@@ -78,7 +78,7 @@ const EmployeeServiceDetail = () => {
             if (!values.count) {
                 message = 'تعداد سرویس نمیتواند خالی باشد.';
             } else if (values.count > service.order_limit) {
-                message = `تعداد بیشتر از سقف قابل سفارش( ${service.order_limit} ) است.`;
+                message = `تعداد بیشتر از سقف قابل سفارش است.`;
             } else if (values.count > service.value) {
                 message = `تعداد سفارش بیشتر از موجمودی خدمت است.`;
             }
