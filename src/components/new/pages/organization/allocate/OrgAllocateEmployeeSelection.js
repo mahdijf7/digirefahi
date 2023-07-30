@@ -138,6 +138,7 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
         (async () => {
             const params = new URLSearchParams();
             params.append('page', filters.page);
+            params.append('status', "ACTIVE");
             if (filters.gender) params.append('gender', filters.gender.id);
             if (filters.groups && filters.groups.length > 0) {
                 filters.groups.forEach((item, index) => {
