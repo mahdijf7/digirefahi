@@ -232,9 +232,9 @@ const DAutoComplete = forwardRef(
                                                         setFieldValue(name, newValue);
                                                     } else {
                                                         if (reason === 'clear') return;
-                                                        console.log(1111);
+                                                 
                                                         setFieldValue(name, newValue);
-                                                        console.log(2222);
+                                                 
                                                         closeOnSingleSelect(newValue);
                                                     }
                                                 }}

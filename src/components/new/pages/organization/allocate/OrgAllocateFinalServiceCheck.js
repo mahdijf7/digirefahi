@@ -34,6 +34,17 @@ const OrgAllocateFinalServiceCheck = ({ values, employeeSelection, onClose, onAl
             employeeSelection.employeeExceptions.forEach((item, index) => {
                 params.append(`except_employee_ides[${index}]`, item.id);
             });
+            if (employeeSelection.gender) {
+                params.append(`gender`, employeeSelection.gender.id);
+            }
+            if (employeeSelection.chart) {
+                params.append(`chart_id`, employeeSelection.chart.id);
+            }
+            if (employeeSelection.groups && employeeSelection.groups.length > 0) {
+                employeeSelection.groups.forEach((item, index) => {
+                    params.append(`group_ides[${index}]`, item.id);
+                });
+            }
         } else {
             employeeSelection.employees.forEach((item, index) => {
                 params.append(`employee_ides[${index}]`, item.id);

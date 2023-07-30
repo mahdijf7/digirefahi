@@ -14,8 +14,7 @@ import theme from 'assets/theme';
 
 const OrgAllocateCreditCategory = memo(({ baseName, disableDelete, budget, onDelete }) => {
     const { t } = useTranslation();
-
-    console.log(1111);
+ 
 
     return (
         <Grid item xs={12}>

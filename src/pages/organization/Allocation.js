@@ -45,7 +45,9 @@ const Allocation = ({}) => {
         setFinalAlertDialogIsOpen(true);
     };
     const setEmployeeSelectionHandler = (data) => {
-        setEmployeeSelection(data);
+        setEmployeeSelection((prev) => {
+            return { ...prev, ...data };
+        });
     };
     const noEmployeeWaSelected = () => {
         return (

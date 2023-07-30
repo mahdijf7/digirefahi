@@ -107,11 +107,13 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
     };
     const filter = (values) => {
         if (loading.filter) return;
-        setLoading({ ...loading, filter: true });
-
-        console.log(values, 123);
+        setLoading({ ...loading, filter: true }); 
 
         setFilters({ ...filters, ...values, page: 1 });
+        onEmployeeToggled({ 
+            ...values,
+        });
+
     };
     const handlePageChange = (newPage) => {
         if (loading.page) return;
@@ -276,6 +278,7 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
                                                     />
                                                 </Grid>
                                                 <Grid item xs={2}>
+                                                
                                                     <DAutoComplete
                                                         name="chart"
                                                         formControlStyle={{ height: '42px' }}
@@ -386,7 +389,7 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
                                                                         <Checkbox
                                                                             name="selectAll"
                                                                             onChange={() => {
-                                                                                console.log(setFieldValue, 1234);
+                                                                                
                                                                                 setFormikApis({
                                                                                     setFieldValue: (name, value) =>
                                                                                         setFieldValue(name, value),
@@ -430,8 +433,7 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
                                                                 selected={
                                                                     values.employees.filter((item) => item.id === employee.id)
                                                                         .length > 0
-                                                                }
-                                                                key={employee.id}
+                                                                } 
                                                                 style={{
                                                                     backgroundColor: index % 2 !== 0 ? '#f2f2f2' : '#ffffff',
                                                                 }}
