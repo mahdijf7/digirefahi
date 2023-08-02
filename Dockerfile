@@ -5,6 +5,7 @@ RUN npm install env-cmd
 RUN npm install
 COPY . .
 # RUN npm test - if you want to test before to build
+ARG STAGE
 RUN echo $STAGE
 RUN npm run build:"${STAGE}"
 
