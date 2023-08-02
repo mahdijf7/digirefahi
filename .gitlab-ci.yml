@@ -11,6 +11,7 @@ build:
   script:
     - echo build started 
     - echo $digirefahi_development_build
+    - echo $current_stage 
     - docker build -t digirefahi-front:latest .
     - echo build is done
 
