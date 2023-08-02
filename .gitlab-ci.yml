@@ -1,68 +1,70 @@
-stages:
-  - build-develope
-  - deploy-develop
-  - build-demo
-  - deploy-demo
+  stages:
+    - build-develope
+    - deploy-develop
+    - build-demo
+    - deploy-demo
 
-build-develope:
-  stage: build-develope
-  tags:
-    - build
-  variables:
-    STAGE: "${digirefahi_development_build}"  
-  script:
-    - echo build started 
-    - echo $STAGE
-    - docker build --build-arg STAGE=${STAGE} -t digirefahi-front-dev:latest .
-    - echo build is done
+  build-develope:
+    stage: build-develope
+    tags:
+      - build
+    variables:
+      STAGE: "${digirefahi_development_build}"  
+    script:
+      - echo build started 
+      - echo $STAGE
+      - docker build --build-arg STAGE=${STAGE} -t digirefahi-front-dev:latest .
+      - echo build is done
 
-deploy-develop:
-  stage: deploy-develop
-  tags:
-    - build
-  script:
-    - echo deployment started
-    - docker rm -f digirefahi-front-dev || true  # Stop the previous container if running (ignore errors if it doesn't exist)
-    - docker run -d -p 30011:80 --name digirefahi-front-dev digirefahi-front-dev:latest  # Start the new container with the latest image 
-  after_script:  
-    - echo deployment is done
+  deploy-develop:
+    stage: deploy-develop
+    tags:
+      - build
+    script:
+      - echo deployment started
+      - docker rm -f digirefahi-front-dev || true  # Stop the previous container if running (ignore errors if it doesn't exist)
+      - docker run -d -p 30011:80 --name digirefahi-front-dev digirefahi-front-dev:latest  # Start the new container with the latest image 
+    after_script:  
+      - echo deployment is done
 
-# Run build and deploy stages when changes are made to the dev branch
-workflow-develope:
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "development"'
-      changes:
-        - '**/*'
+  # Run build and deploy stages when changes are made to the dev branch
+  workflow-develope:
+    rules:
+      - if: '$CI_COMMIT_BRANCH == "development"'
+        changes:
+          - '**/*'
 
 
-build-demo:
-  stage: build-demo
-  tags:
-    - build
-  variables:
-    STAGE: "${digirefahi_demo_build}"  
-  script:
-    - echo build started 
-    - echo $STAGE
-    - docker build --build-arg STAGE=${STAGE} -t digirefahi-front-demo:latest .
-    - echo build is done
 
-demo:
-  stage: demo
-  tags:
-    - build
-  script:
-    - echo deployment started
-    - docker rm -f digirefahi-front-demo || true  # Stop the previous container if running (ignore errors if it doesn't exist)
-    - docker run -d -p 30021:80 --name digirefahi-front-demo digirefahi-front-demo:latest  # Start the new container with the latest image 
-  after_script:  
-    - echo deployment is done
 
-# Run build and deploy stages when changes are made to the dev branch
-workflow-demo:
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "demo"'
-      changes:
-        - '**/*'
+  build-demo:
+    stage: build-demo
+    tags:
+      - build
+    variables:
+      STAGE: "${digirefahi_demo_build}"  
+    script:
+      - echo build started 
+      - echo $STAGE
+      - docker build --build-arg STAGE=${STAGE} -t digirefahi-front-demo:latest .
+      - echo build is done
+
+  demo:
+    stage: demo
+    tags:
+      - build
+    script:
+      - echo deployment started
+      - docker rm -f digirefahi-front-demo || true  # Stop the previous container if running (ignore errors if it doesn't exist)
+      - docker run -d -p 30021:80 --name digirefahi-front-demo digirefahi-front-demo:latest  # Start the new container with the latest image 
+    after_script:  
+      - echo deployment is done
+
+  # Run build and deploy stages when changes are made to the dev branch
+  workflow-demo:
+    rules:
+      - if: '$CI_COMMIT_BRANCH == "demo"'
+        changes:
+          - '**/*'
 
     
