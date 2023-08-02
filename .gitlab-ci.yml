@@ -12,7 +12,7 @@ build:
   script:
     - echo build started 
     - echo $STAGE
-    - docker build --build-arg STAGE=${STAGE} -t digirefahi-front:latest .
+    - docker build --build-arg STAGE=${STAGE} -t digirefahi-front-dev:latest .
     - echo build is done
 
 deploy:
@@ -22,7 +22,7 @@ deploy:
   script:
     - echo deployment started
     - docker rm -f digirefahi-front-dev || true  # Stop the previous container if running (ignore errors if it doesn't exist)
-    - docker run -d -p 30011:80 --name digirefahi-front-dev digirefahi-front:latest  # Start the new container with the latest image 
+    - docker run -d -p 30011:80 --name digirefahi-front-dev digirefahi-front-dev:latest  # Start the new container with the latest image 
   after_script:  
     - echo deployment is done
 
@@ -37,7 +37,7 @@ build-demo:
   script:
     - echo build started 
     - echo $STAGE
-    - docker build --build-arg STAGE=${STAGE} -t digirefahi-front:latest .
+    - docker build --build-arg STAGE=${STAGE} -t digirefahi-front-demo:latest .
     - echo build is done
 
 demo:
@@ -47,7 +47,7 @@ demo:
   script:
     - echo deployment started
     - docker rm -f digirefahi-front-demo || true  # Stop the previous container if running (ignore errors if it doesn't exist)
-    - docker run -d -p 30021:80 --name digirefahi-front-demo digirefahi-front:latest  # Start the new container with the latest image 
+    - docker run -d -p 30021:80 --name digirefahi-front-demo digirefahi-front-demo:latest  # Start the new container with the latest image 
   after_script:  
     - echo deployment is done
 
