@@ -1,10 +1,11 @@
 stages:
-  - build
-  - deploy
+  - build-develope
+  - deploy-develop
   - build-demo
-  - demo
-build:
-  stage: build
+  - deploy-demo
+
+build-develope:
+  stage: build-develope
   tags:
     - build
   variables:
@@ -15,8 +16,8 @@ build:
     - docker build --build-arg STAGE=${STAGE} -t digirefahi-front-dev:latest .
     - echo build is done
 
-deploy:
-  stage: deploy
+deploy-develop:
+  stage: deploy-develop
   tags:
     - build
   script:
@@ -26,6 +27,12 @@ deploy:
   after_script:  
     - echo deployment is done
 
+# Run build and deploy stages when changes are made to the dev branch
+workflow-develope:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "development"'
+      changes:
+        - '**/*'
 
 
 build-demo:
@@ -51,10 +58,11 @@ demo:
   after_script:  
     - echo deployment is done
 
-    
 # Run build and deploy stages when changes are made to the dev branch
-workflow:
+workflow-demo:
   rules:
-    - if: '$CI_COMMIT_BRANCH == "development"'
+    - if: '$CI_COMMIT_BRANCH == "demo"'
       changes:
         - '**/*'
+
+    
