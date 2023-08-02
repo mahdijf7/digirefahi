@@ -1,18 +1,18 @@
 stages:
   - build
   - deploy
+  - build-demo
   - demo
 build:
   stage: build
   tags:
     - build
   variables:
-    current_stage: "${digirefahi_development_build}"  
+    STAGE: "${digirefahi_development_build}"  
   script:
     - echo build started 
-    - echo $digirefahi_development_build
-    - echo $current_stage 
-    - docker build --build-arg current_stage=${current_stage} -t digirefahi-front:latest .
+    - echo $STAGE
+    - docker build --build-arg STAGE=${STAGE} -t digirefahi-front:latest .
     - echo build is done
 
 deploy:
@@ -26,6 +26,19 @@ deploy:
   after_script:  
     - echo deployment is done
 
+
+
+build-demo:
+  stage: build-demo
+  tags:
+    - build
+  variables:
+    STAGE: "${digirefahi_demo_build}"  
+  script:
+    - echo build started 
+    - echo $STAGE
+    - docker build --build-arg STAGE=${STAGE} -t digirefahi-front:latest .
+    - echo build is done
 
 demo:
   stage: demo
