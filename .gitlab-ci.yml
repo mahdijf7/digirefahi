@@ -6,8 +6,11 @@ build:
   stage: build
   tags:
     - build
+  variables:
+    current_stage: "${digirefahi_development_build}"  
   script:
-    - echo build started    
+    - echo build started 
+    - echo $digirefahi_development_build
     - docker build -t digirefahi-front:latest .
     - echo build is done
 
