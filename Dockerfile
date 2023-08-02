@@ -5,7 +5,7 @@ RUN npm install env-cmd
 RUN npm install
 COPY . .
 # RUN npm test - if you want to test before to build
-RUN npm run build:development
+RUN npm run build:$current_stage
 
 FROM nginx:alpine AS prod
 WORKDIR /usr/share/nginx/html
