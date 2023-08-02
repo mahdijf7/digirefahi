@@ -6,8 +6,8 @@ RUN npm install
 COPY . .
 
 ARG STAGE
-RUN echo $STAGE
-RUN npm run build:STAGE
+
+RUN npm run build:$STAGE
 
 FROM nginx:alpine AS prod
 WORKDIR /usr/share/nginx/html
