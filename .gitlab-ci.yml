@@ -12,7 +12,7 @@ build:
     - echo build started 
     - echo $digirefahi_development_build
     - echo $current_stage 
-    - docker build -t digirefahi-front:latest .
+    - docker build --build-arg current_stage=${current_stage} -t digirefahi-front:latest .
     - echo build is done
 
 deploy:
