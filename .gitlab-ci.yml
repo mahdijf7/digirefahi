@@ -38,7 +38,7 @@
       tags:
         - build
       variables:
-        STAGE: "${digirefahi_demo_build}"  
+        STAGE: "${digirefahi_demo_build}"    
 
       script:
         - echo build started
