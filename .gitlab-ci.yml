@@ -39,8 +39,10 @@
         - build
       variables:
         STAGE: "${digirefahi_demo_build}"  
+
       script:
-        - echo build started 
+        - echo build started
+        - echo $digirefahi_demo_build
         - echo $STAGE
         - docker build --build-arg STAGE=${STAGE} -t digirefahi-front-demo:latest .
         - echo build is done
