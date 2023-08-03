@@ -39,7 +39,7 @@
         - docker build --build-arg STAGE=${STAGE} -t digirefahi-front-demo:latest .
         - echo build is done
 
-    demo:
+  demo:
       stage: demo
       tags:
         - build
