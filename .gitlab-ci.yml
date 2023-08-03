@@ -56,7 +56,7 @@
         - docker rm -f digirefahi-front-demo || true  # Stop the previous container if running (ignore errors if it doesn't exist)
         - docker run -d -p 30021:80 --name digirefahi-front-demo digirefahi-front-demo:latest  # Start the new container with the latest image 
       after_script:  
-        - echo deployment is done
+        - echo deployment is done.
       
       rules:
        - if: '$CI_COMMIT_BRANCH == "demo"'
