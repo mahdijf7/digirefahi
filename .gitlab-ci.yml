@@ -51,7 +51,7 @@
         - echo deployment is done
       
   # Run build and deploy stages when changes are made to the dev branch
-  workflow-develope:
+  workflow:
     rules:
       - if: '$CI_COMMIT_BRANCH == "development"'
         changes:
