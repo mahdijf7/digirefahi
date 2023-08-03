@@ -1,11 +1,11 @@
   stages:
-    - build-develope
+    - build-develop
     - deploy-develop
     - build-demo
     - deploy-demo
 
-  build-develope:
-    stage: build-develope
+  build-develop:
+    stage: build-develop
     tags:
       - build
     variables:
@@ -39,8 +39,8 @@
         - docker build --build-arg STAGE=${STAGE} -t digirefahi-front-demo:latest .
         - echo build is done
 
-  demo:
-      stage: demo
+  deploy-demo:
+      stage: deploy-demo
       tags:
         - build
       script:
