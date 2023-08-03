@@ -9,7 +9,7 @@
     tags:
       - build
     variables:
-      STAGE: "${digirefahi_development_build}"  
+      STAGE: "${Digirefahi_Development_Build}"  
     script:
       - echo build started 
       - echo $STAGE
