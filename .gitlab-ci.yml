@@ -15,6 +15,8 @@
       - echo $STAGE
       - docker build --build-arg STAGE=${STAGE} -t digirefahi-front-dev:latest .
       - echo build is done
+    rules:
+    - if: '$CI_COMMIT_BRANCH == "development"'
 
   deploy-develop:
     stage: deploy-develop
@@ -29,8 +31,7 @@
       
     rules:
     - if: '$CI_COMMIT_BRANCH == "development"'
-    needs:
-    - build-develop 
+
 
   build-demo:
       stage: build-demo
@@ -43,6 +44,8 @@
         - echo $STAGE
         - docker build --build-arg STAGE=${STAGE} -t digirefahi-front-demo:latest .
         - echo build is done
+      rules:
+      - if: '$CI_COMMIT_BRANCH == "demo"'
 
   deploy-demo:
       stage: deploy-demo
@@ -55,5 +58,6 @@
       after_script:  
         - echo deployment is done
       
-
+      rules:
+       - if: '$CI_COMMIT_BRANCH == "demo"'
 
