@@ -1,35 +1,63 @@
-stages:
-  - build
-  - deploy
+  stages:
+    - build-develop
+    - deploy-develop
+    - build-demo
+    - deploy-demo
 
-build:
-  stage: build
-  tags:
-    - build
-  script:
-    - echo build started    
-    - docker build -t digirefahi-front-dev:latest .
-    - echo build is done
-
-deploy:
-  stage: deploy
-  tags:
-    - build
-  script:
-    - echo deployment started
-    - docker rm -f digirefahi-front-dev || true  # Stop the previous container if running (ignore errors if it doesn't exist)
-    - docker run -d -p 30011:80 --name digirefahi-front-dev digirefahi-front-dev:latest  # Start the new container with the latest image and specific name
-    #- docker exec edchlast unzip /app/packages.zip
-  after_script:  
-    #- docker exec edchlast chmod +x ./dockerrun.sh
-    #- docker exec edchlast ./dockerrun.sh
-    # - docker exec edchlast dotnet build
-    # - docker exec edchlast dotnet run --project /app/EDCH.ClientApp/EDCH.ClientApp.csproj -launch-profile profile1 &
-    - echo deployment is done
-
-# Run build and deploy stages when changes are made to the dev branch
-workflow:
-  rules:
+  build-develop:
+    stage: build-develop
+    tags:
+      - build
+    variables:
+      STAGE: "${digirefahi_development_build}"  
+    script:
+      - echo build started 
+      - echo $STAGE
+      - docker build --build-arg STAGE=${STAGE} -t digirefahi-front-dev:latest .
+      - echo build is done
+    rules:
     - if: '$CI_COMMIT_BRANCH == "development"'
-      changes:
-        - '**/*'
+
+  deploy-develop:
+    stage: deploy-develop
+    tags:
+      - build
+    script:
+      - echo deployment started
+      - docker rm -f digirefahi-front-dev || true  # Stop the previous container if running (ignore errors if it doesn't exist)
+      - docker run -d -p 30011:80 --name digirefahi-front-dev digirefahi-front-dev:latest  # Start the new container with the latest image 
+    after_script:  
+      - echo deployment is done
+      
+    rules:
+    - if: '$CI_COMMIT_BRANCH == "development"'
+
+
+  build-demo:
+      stage: build-demo
+      tags:
+        - build
+      variables:
+        STAGE: "${digirefahi_demo_build}"  
+      script:
+        - echo build started 
+        - echo $STAGE
+        - docker build --build-arg STAGE=${STAGE} -t digirefahi-front-demo:latest .
+        - echo build is done
+      rules:
+      - if: '$CI_COMMIT_BRANCH == "demo"'
+
+  deploy-demo:
+      stage: deploy-demo
+      tags:
+        - build
+      script:
+        - echo deployment started
+        - docker rm -f digirefahi-front-demo || true  # Stop the previous container if running (ignore errors if it doesn't exist)
+        - docker run -d -p 30021:80 --name digirefahi-front-demo digirefahi-front-demo:latest  # Start the new container with the latest image 
+      after_script:  
+        - echo deployment is done
+      
+      rules:
+       - if: '$CI_COMMIT_BRANCH == "demo"'
+
