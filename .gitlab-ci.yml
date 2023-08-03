@@ -38,12 +38,12 @@
       tags:
         - build
       variables:
-        Demo: "${Digirefahi_Demo_Build}"    
+        STAGE: "${Digirefahi_Demo_Build}"    
 
       script:
         - echo build started
+        - echo $STAGE
         - echo $Digirefahi_Demo_Build
-        - echo $Demo
         - docker build --build-arg STAGE=${STAGE} -t digirefahi-front-demo:latest .
         - echo build is done
       rules:
