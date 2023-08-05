@@ -77,7 +77,7 @@
         - docker build --build-arg STAGE=${STAGE} -t digirefahi-front-pro:latest .
         - echo build is done
       rules:
-      - if: '$CI_COMMIT_BRANCH == "pro"'
+      - if: '$CI_COMMIT_BRANCH == "main"'
 
   deploy-pro:
       stage: deploy-pro
@@ -91,6 +91,6 @@
         - echo deployment is done
         
       rules:
-      - if: '$CI_COMMIT_BRANCH == "pro"'
+      - if: '$CI_COMMIT_BRANCH == "main"'
 
 
