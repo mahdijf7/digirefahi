@@ -79,7 +79,7 @@
       rules:
       - if: '$CI_COMMIT_BRANCH == "pro"'
 
-    deploy-pro:
+  deploy-pro:
       stage: deploy-pro
       tags:
         - build
