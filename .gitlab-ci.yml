@@ -1,4 +1,4 @@
-  stages:
+ stages:
     - build-develop
     - deploy-develop
     - build-demo
@@ -70,7 +70,7 @@
       tags:
         - build
       variables:
-        STAGE: Production  
+        STAGE: "${Digirefahi_Pro_Build}"   
       script:
         - echo build started 
         - echo $STAGE
@@ -92,5 +92,3 @@
         
       rules:
       - if: '$CI_COMMIT_BRANCH == "main"'
-
-
