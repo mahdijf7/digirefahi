@@ -3,6 +3,8 @@
     - deploy-develop
     - build-demo
     - deploy-demo
+    - build-pro
+    - deploy-pro
 
   build-develop:
     stage: build-develop
@@ -62,4 +64,33 @@
       
       rules:
        - if: '$CI_COMMIT_BRANCH == "demo"'
+
+  build-pro:
+      stage: build-pro
+      tags:
+        - build
+      variables:
+        STAGE: Production  
+      script:
+        - echo build started 
+        - echo $STAGE
+        - docker build --build-arg STAGE=${STAGE} -t digirefahi-front-pro:latest .
+        - echo build is done
+      rules:
+      - if: '$CI_COMMIT_BRANCH == "pro"'
+
+    deploy-pro:
+      stage: deploy-pro
+      tags:
+        - build
+      script:
+        - echo deployment started
+        - docker rm -f digirefahi-front-pro || true  # Stop the previous container if running (ignore errors if it doesn't exist)
+        - docker run -d -p 3500:80 --name digirefahi-front-pro digirefahi-front-pro:latest  # Start the new container with the latest image 
+      after_script:  
+        - echo deployment is done
+        
+      rules:
+      - if: '$CI_COMMIT_BRANCH == "pro"'
+
 
