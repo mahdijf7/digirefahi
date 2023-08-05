@@ -45,9 +45,13 @@ const Allocation = ({}) => {
         setFinalAlertDialogIsOpen(true);
     };
     const setEmployeeSelectionHandler = (data) => {
-        setEmployeeSelection(data);
+        setEmployeeSelection((prev) => {
+            return { ...prev, ...data };
+        });
+        console.log(data, 987);
     };
     const noEmployeeWaSelected = () => {
+        if (employeeSelection.selectAll && employeeSelection.count === 0) return true;
         return (
             !employeeSelection.selectAll &&
             (!employeeSelection.employees || (employeeSelection.employees && employeeSelection.employees.length === 0))

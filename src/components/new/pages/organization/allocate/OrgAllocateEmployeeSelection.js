@@ -109,8 +109,16 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
         if (loading.filter) return;
         setLoading({ ...loading, filter: true });
 
-        console.log(values, 123);
-
+        if (formikApis?.setFieldValue) {
+            console.log(1234, values);
+            formikApis.setFieldValue('employees', []);
+            formikApis.setFieldValue('employeeExceptions', []);
+            formikApis.setFieldValue('selectAll', false) 
+        }
+        onEmployeeToggled({
+            count: 0,
+            ...values,
+        });
         setFilters({ ...filters, ...values, page: 1 });
     };
     const handlePageChange = (newPage) => {
@@ -119,7 +127,7 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
 
         setFilters({ ...filters, page: newPage });
     };
-    const employeeSelcetionChanged = (values, count) => {
+    const employeeSelcetionChanged = (values, count = 0) => {
         onEmployeeToggled({
             count: count,
             ...values,
@@ -130,6 +138,7 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
         (async () => {
             const params = new URLSearchParams();
             params.append('page', filters.page);
+            params.append('status', "ACTIVE");
             if (filters.gender) params.append('gender', filters.gender.id);
             if (filters.groups && filters.groups.length > 0) {
                 filters.groups.forEach((item, index) => {
@@ -143,7 +152,6 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
                     setEmployees(res.data.data);
                     setTotalPage(res.data.meta.last_page);
                     setTotalEmployees(res.data.meta.total);
-                    formikApis && formikApis.setFieldValue('employees', res.data.data);
                 })
                 .catch((err) => {
                     console.log(5555555);
@@ -376,6 +384,7 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
                                         className={(loading.page || loading.filter) && 'box--isLoading'}
                                         sx={{ mt: '2rem', p: '26px 29px' }}>
                                         <DLoadingWrapper loading={loading.initial}>
+                                      
                                             <DTableWrapper>
                                                 <TableHead>
                                                     <TableRow>
@@ -384,9 +393,9 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
                                                                 <TableCell style={tableHeadStyle} key={`table-column-${index}`}>
                                                                     {column.selectAll && employees.length > 0 ? (
                                                                         <Checkbox
+                                                                            checked={values.selectAll}
                                                                             name="selectAll"
                                                                             onChange={() => {
-                                                                                console.log(setFieldValue, 1234);
                                                                                 setFormikApis({
                                                                                     setFieldValue: (name, value) =>
                                                                                         setFieldValue(name, value),
@@ -431,7 +440,6 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
                                                                     values.employees.filter((item) => item.id === employee.id)
                                                                         .length > 0
                                                                 }
-                                                                key={employee.id}
                                                                 style={{
                                                                     backgroundColor: index % 2 !== 0 ? '#f2f2f2' : '#ffffff',
                                                                 }}
@@ -467,10 +475,6 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
                                                                             ]);
                                                                         } else {
                                                                             employeeSelcetionChanged(
-                                                                                values,
-                                                                                totalEmployees - employeeExceptions.length - 1
-                                                                            );
-                                                                            employeeSelcetionChanged(
                                                                                 {
                                                                                     ...values,
                                                                                     employeeExceptions: [
@@ -481,7 +485,7 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
                                                                                         (item) => item.id != selectedEmployee.id
                                                                                     ),
                                                                                 },
-                                                                                totalEmployees - employeeExceptions.length + 1
+                                                                                totalEmployees - employeeExceptions.length - 1
                                                                             );
                                                                             setFieldValue('employeeExceptions', [
                                                                                 ...values.employeeExceptions,
@@ -495,6 +499,7 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
                                                                             );
                                                                         }
                                                                     } else {
+                                                                        console.log('employee toggled');
                                                                         const employeeAlreadySelected =
                                                                             values.employees.filter(
                                                                                 (item) => item.id === selectedEmployee.id
@@ -505,6 +510,8 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
                                                                               )
                                                                             : [...values.employees, selectedEmployee];
                                                                         setFieldValue('employees', newEmployeesArray);
+
+                                                                        console.log(newEmployeesArray,876);
                                                                         employeeSelcetionChanged(
                                                                             {
                                                                                 ...values,

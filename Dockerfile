@@ -4,8 +4,10 @@ COPY package*.json ./
 RUN npm install env-cmd
 RUN npm install
 COPY . .
-# RUN npm test - if you want to test before to build
-RUN npm run build:development
+
+ARG STAGE
+
+RUN npm run build:$STAGE
 
 FROM nginx:alpine AS prod
 WORKDIR /usr/share/nginx/html
