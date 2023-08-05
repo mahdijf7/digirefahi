@@ -1,4 +1,4 @@
- stages:
+  stages:
     - build-develop
     - deploy-develop
     - build-demo
