@@ -28,6 +28,13 @@ const OrgAddEmployeeDialog = ({ onClose, onSave }) => {
         firstname: Yup.string('').required(getErrorTranslation(t('errors.required'), { name: 'نام' })),
         lastname: Yup.string('').required(getErrorTranslation(t('errors.required'), { name: 'نام خانوادگی' })),
         national_code: Yup.string('').required(getErrorTranslation(t('errors.required'), { name: 'کد ملی' })),
+        chart: Yup.array().of(
+            Yup.object().test('check-first-element', getErrorTranslation(t('errors.required'), { name: 'چارت سازمانی' }), function () {
+                const { parent } = this;
+                const firstEle = parent[0];
+                return typeof firstEle === 'object';
+            })
+        ),
     });
 
     const tabs = [{ id: 1, title: t('employees.employeInfo') }];

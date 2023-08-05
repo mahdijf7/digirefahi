@@ -24,7 +24,7 @@ PopperComponent.propTypes = {
     disablePortal: PropTypes.bool,
     open: PropTypes.bool.isRequired,
 };
-
+ 
 const DAutoComplete = forwardRef(
     (
         {
@@ -35,6 +35,7 @@ const DAutoComplete = forwardRef(
             placeholder,
             defaultOptions = [],
             defaultValue = false,
+            showError,
             multiple = false,
             isDisabled = false,
             isAsync = false,
@@ -180,7 +181,7 @@ const DAutoComplete = forwardRef(
         }, [open, apiPath, inputValue, reFetchKey]);
 
         return (
-            <Box className="column">
+            <Box className="column"> 
                 <Field name={name}>
                     {({
                         field, // { name, value, onChange, onBlur }
@@ -196,7 +197,7 @@ const DAutoComplete = forwardRef(
                                     isSelected={isSelected}
                                     isDisabled={isDisabled}
                                     isOpen={anchorEl}
-                                    hasError={meta.touched && meta.error}
+                                    hasError={meta.touched && meta.error && showError}
                                     multiple={multiple}
                                     value={field.value}
                                     onOpen={handleClick}
@@ -276,7 +277,7 @@ const DAutoComplete = forwardRef(
                                                         inputProps={params.inputProps}
                                                         autoFocus
                                                         placeholder={placeholder}
-                                                        error={meta.touched && Boolean(meta.error)}
+                                                        error={meta.touched && Boolean(meta.error) && showError}
                                                     />
                                                 )}
                                                 sx={{
@@ -301,8 +302,8 @@ const DAutoComplete = forwardRef(
                                         </div>
                                     </ClickAwayListener>
                                 </StyledPopper>
-                            </FormControl>
-                            {meta.touched && meta.error && (
+                            </FormControl> 
+                            {meta.touched && meta.error && showError && (
                                 <Typography
                                     component="span"
                                     sx={{
@@ -323,5 +324,7 @@ const DAutoComplete = forwardRef(
         );
     }
 );
-
+DAutoComplete.defaultProps = {
+    showError: true
+}
 export default DAutoComplete;

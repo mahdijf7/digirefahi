@@ -164,11 +164,13 @@ const OrganizationEmployeeChart = ({ employeeId, onClose, onSave }) => {
                                                                     for (let i = index + 1; i < values.chart.length; i++) {
                                                                         arrayHelpers.pop();
                                                                     }
-                                                                    selectedValue &&
-                                                                        (selectedValue.child ||
+                                                                    if (selectedValue) {
+                                                                        (selectedValue.child ||     
                                                                             (selectedValue.children_all &&
-                                                                                selectedValue.children_all.length > 0)) &&
-                                                                        arrayHelpers.push('');
+                                                                                selectedValue.children_all
+                                                                                    .length > 0)) &&
+                                                                            arrayHelpers.push('');
+                                                                    }
                                                                 }}
                                                             />
                                                         </Grid>

@@ -143,7 +143,7 @@ const AdminEmployeeChart = ({ employeeId, onClose, onSave }) => {
                                                             xs={12}
                                                             sm={6}
                                                             md={4}
-                                                            key={`chart${chart.id ? `${chart.name}-${chart.id}` : new Date()}`}>
+                                                            key={`chart${chart?.id ? `${chart.name}-${chart.id}` : new Date()}`}>
                                                             <DAutoComplete
                                                                 name={`chart[${index}]`}
                                                                 label={`سطح ${persianNumberInWords[index]} سازمان`}
@@ -163,10 +163,13 @@ const AdminEmployeeChart = ({ employeeId, onClose, onSave }) => {
                                                                     for (let i = index + 1; i < values.chart.length; i++) {
                                                                         arrayHelpers.pop();
                                                                     }
-                                                                    (selectedValue.child ||
-                                                                        (selectedValue.children_all &&
-                                                                            selectedValue.children_all.length > 0)) &&
-                                                                        arrayHelpers.push('');
+                                                                    if (selectedValue) {
+                                                                        (selectedValue.child ||     
+                                                                            (selectedValue.children_all &&
+                                                                                selectedValue.children_all
+                                                                                    .length > 0)) &&
+                                                                            arrayHelpers.push('');
+                                                                    }
                                                                 }}
                                                             />
                                                         </Grid>
