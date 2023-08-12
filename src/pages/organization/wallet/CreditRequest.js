@@ -148,7 +148,7 @@ const CreditRequest = ({onClose, requestId, onSave}) => {
                                         <TableCell style={{...tableCellStyle,width:"60%"}}>{request.company_description}</TableCell>
                                         <TableCell style={tableCellStyle}>     {<Button variant='contained' style={request.file ? downloadBtnStyle : downloadDisableBtnStyle} disabled={!request.file}
                                                                                         startIcon={request.file ? <DownloadIcon/> : <DownloadDisableIcon/>}>
-                                            <a href={request.file} style={request.file ? downloadLinkStyle: downloadLinkDisableStyle} target="_blank" download>
+                                            <a href={`${process.env.REACT_APP_STORAGE_URL}/${request.file}`} style={request.file ? downloadLinkStyle: downloadLinkDisableStyle} target="_blank" download>
                                                 دانلود فایل
                                             </a>
                                         </Button>}</TableCell>
@@ -171,9 +171,9 @@ const CreditRequest = ({onClose, requestId, onSave}) => {
                                 <Grid  rowSpacing="14px" container>
                                     <Box  className="flex"  justifyContent="space-between">
                                     <Typography variant="h4" style={uploadTitle}>فایل ضمیمه را مشاهده نمایید:</Typography>
-                                        {<Button variant='contained' style={request.file ? downloadBtnStyle : downloadDisableBtnStyle} disabled={!request.file}
-                                                 startIcon={request.file ? <DownloadIcon/> : <DownloadDisableIcon/>}>
-                                            <a href={request.file} style={request.file ? downloadLinkStyle: downloadLinkDisableStyle} target="_blank" download>
+                                        {<Button variant='contained' style={request.archive_file ? downloadBtnStyle : downloadDisableBtnStyle} disabled={!request.archive_file}
+                                                 startIcon={request.archive_file ? <DownloadIcon/> : <DownloadDisableIcon/>}>
+                                            <a href={`${process.env.REACT_APP_STORAGE_URL}/${request.archive_file}`} style={request.archive_file ? downloadLinkStyle: downloadLinkDisableStyle} target="_blank" download>
                                                 دانلود فایل
                                             </a>
                                         </Button>}
