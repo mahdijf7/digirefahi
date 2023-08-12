@@ -290,7 +290,7 @@ const CreditRequest = ({onClose, requestId, onSave,onRefresh}) => {
                                         <TableCell style={tableCellStyle}>{request.company_description}</TableCell>
                                         <TableCell style={tableCellStyle}>     {<Button variant='contained' style={request.file ? downloadBtnStyle : downloadDisableBtnStyle} disabled={!request.file}
                                                                                         startIcon={request.file ? <DownloadIcon/> : <DownloadDisableIcon/>}>
-                                            <a href={request.file} style={request.file ? downloadLinkStyle: downloadLinkDisableStyle} target="_blank" download>
+                                            <a href={`${process.env.REACT_APP_STORAGE_URL}/${request.file}`} style={request.file ? downloadLinkStyle: downloadLinkDisableStyle} target="_blank" download>
                                                 دانلود فایل
                                             </a>
                                         </Button>}</TableCell>
@@ -338,9 +338,9 @@ const CreditRequest = ({onClose, requestId, onSave,onRefresh}) => {
                                                 نمایید.
                                             </Typography>
 
-                                            <Button variant='contained' style={request.archive_file ? downloadBtnStyle : downloadDisableBtnStyle} disabled={!request.file}
+                                            <Button variant='contained' style={request.archive_file ? downloadBtnStyle : downloadDisableBtnStyle} disabled={!request.archive_file}
                                                     startIcon={request.archive_file ? <DownloadIcon/> : <DownloadDisableIcon/>}>
-                                                <a href={request.archive_file} style={request.archive_file ? downloadLinkStyle: downloadLinkDisableStyle} target="_blank" download>
+                                                <a href={`${process.env.REACT_APP_STORAGE_URL}/${request.archive_file}`} style={request.archive_file ? downloadLinkStyle: downloadLinkDisableStyle} target="_blank" download>
                                                     دانلود فایل
                                                 </a>
                                             </Button>
