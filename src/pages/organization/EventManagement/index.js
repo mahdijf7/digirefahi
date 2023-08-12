@@ -53,7 +53,7 @@ function EventsManagement(props) {
         setEventId(id);
         setShowDeleteCategoryDialog(true);
     };
-    const closeDeleteCategoryDialog = () => {
+    const closeDeleteEventDialog = () => {
         setEventId(null);
         setShowDeleteCategoryDialog(false);
     };
@@ -63,7 +63,7 @@ function EventsManagement(props) {
         openDeleteCategoryDialog(id);
     };
 
-    const deleteBannerById = async () => {
+    const deleteEventById = async () => {
         if (loading.delete) return;
         setLoading({ ...loading, delete: true });
 
@@ -72,7 +72,7 @@ function EventsManagement(props) {
             .then((res) => {
                 setFilters({ ...filters, page: 1 });
                 setLoading({ ...loading, delete: false });
-                closeDeleteCategoryDialog();
+                closeDeleteEventDialog();
 
                 setSnackBarData({
                     show: true,
@@ -201,9 +201,9 @@ function EventsManagement(props) {
             {showDeleteCategoryDialog && (
                 <DDeleteDialog
                     loading={loading.delete}
-                    title="بنر"
-                    onDelete={deleteBannerById}
-                    onClose={closeDeleteCategoryDialog}
+                    title="رویداد"
+                    onDelete={deleteEventById}
+                    onClose={closeDeleteEventDialog}
                 />
             )}
 
