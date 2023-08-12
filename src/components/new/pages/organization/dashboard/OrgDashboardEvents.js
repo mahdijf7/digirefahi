@@ -4,11 +4,22 @@ import { Link } from 'react-router-dom';
 // Components
 import DBox from 'components/new/shared/DBox';
 
+let moment = require('moment-jalaali');
+
 const OrgDashboardEvents = ({ events }) => {
     return (
         <DBox sx={{ p: '24px 26px 21px 26px', alignItems: 'flex-start' }}>
             <Typography sx={{ fontSize: '20px' }}>رویداد های این ماه</Typography>
             <Box sx={{ display: 'grid', mb: '30px', mt: '14px', width: '100%' }}>
+                {events.length === 0 && (
+                    <Typography
+                        color="primary"
+                        sx={{
+                            fontSize: '11px',
+                        }}>
+                        رویدادی برای نمایش وجود ندارد.
+                    </Typography>
+                )}
                 {events.map((event) => (
                     <Box
                         sx={{
@@ -18,11 +29,22 @@ const OrgDashboardEvents = ({ events }) => {
                             justifyContent: 'space-between',
                             padding: '8px 0',
                             gap: '10px',
-                        }} key={event.id}>
+                        }}
+                        key={event.id}>
                         <Typography sx={{ fontSize: '12px' }} noWrap={true}>
                             {event.name}
                         </Typography>
-                        <Typography>{event.date}</Typography>
+                        <Typography
+                            color="primary"
+                            sx={{
+                                fontSize: '11px',
+                                borderRadius: '5px',
+                                p: '0 6px',
+                                border: '1px solid #0877BD',
+                                lineHeight: '22px',
+                            }}>
+                            {moment.duration(moment(event.date).diff(new Date())).humanize()} دیگر
+                        </Typography>
                     </Box>
                 ))}
             </Box>
@@ -43,7 +65,7 @@ const style = {
     fontSize: '14px',
     color: '#0877BD',
     textDecoration: 'none',
-    ml: 'auto'
+    ml: 'auto',
 };
 
 export default OrgDashboardEvents;
