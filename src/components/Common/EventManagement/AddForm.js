@@ -54,8 +54,8 @@ const AddForm = ({ isOpen, onClose, mode, getEvents, update, eventId, event, set
 
 const wrapperStyles = {
     display: 'flex',
-    flexDirection: 'column',
-    marginTop: '13rem',
+    flexDirection: 'column', 
+    marginTop: "10rem"
 };
 
 const eventStyle = {

@@ -4,7 +4,7 @@ import { Grid, Button, Typography } from '@mui/material';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import { LoadingButton } from '@mui/lab';
 import * as Yup from 'yup';
-import { Form, Formik, FieldArray } from 'formik';
+import { Form, Formik, FieldArray, ErrorMessage } from 'formik';
 
 // Utils
 import adminService from 'service/api/adminService';
@@ -18,6 +18,7 @@ import DDialogHeader from 'components/new/shared/DDialog/DDialogHeader';
 import CustomChip from 'components/Common/Form/CustomChip';
 import DAutoComplete from 'components/new/shared/Form/DAutoComplete';
 import CustomInputBase from 'components/Common/Form/CustomInputBase';
+import { json } from 'react-router-dom';
 
 const persianNumberInWords = ['یک', 'دو', 'سه', 'چهار', 'پنج', 'شیش', 'هفت', 'هشت', 'نه', 'ده'];
 
@@ -28,6 +29,16 @@ const AdminAddEmployeeDialog = ({ onClose, onSave }) => {
         firstname: Yup.string('').required(getErrorTranslation(t('errors.required'), { name: 'نام' })),
         lastname: Yup.string('').required(getErrorTranslation(t('errors.required'), { name: 'نام خانوادگی' })),
         national_code: Yup.string('').required(getErrorTranslation(t('errors.required'), { name: 'کد ملی' })),
+        company_id: Yup.object()
+            .nullable()
+            .required(getErrorTranslation(t('errors.required'), { name: 'سازمان' })),
+        chart: Yup.array().of(
+            Yup.object().test('check-first-element', getErrorTranslation(t('errors.required'), { name: 'چارت سازمانی' }), function () {
+                const { parent } = this;
+                const firstEle = parent[0]; 
+                return typeof firstEle === 'object';
+            })
+        ),
     });
 
     const tabs = [{ id: 1, title: t('employees.employeInfo') }];
@@ -150,6 +161,9 @@ const AdminAddEmployeeDialog = ({ onClose, onSave }) => {
                                                                 callOnOpen
                                                                 searchOnType
                                                                 apiPath={`admin/companies`}
+                                                                onSelect={() => {
+                                                                    setFieldValue('chart', ['']);
+                                                                }}
                                                             />
                                                         </Grid>
                                                         {values.company_id && (
@@ -222,7 +236,7 @@ const AdminAddEmployeeDialog = ({ onClose, onSave }) => {
                                                                                     </Grid>
                                                                                 ))
                                                                             }
-                                                                        />
+                                                                        /> 
                                                                     </Grid>
                                                                 </Grid>
                                                             </>

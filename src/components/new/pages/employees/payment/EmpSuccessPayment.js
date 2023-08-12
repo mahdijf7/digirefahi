@@ -74,7 +74,7 @@ const EmpSuccessPayment = ({ order }) => {
                     </DTableWrapper>
                 </Box>
 
-                <EmpSuccessPaymentCodes codes={order.codes} />
+                <EmpSuccessPaymentCodes codes={order.codes} ticketType={order.service.ticket_type} />
 
                 <Box sx={{ pb: '50px', mt: '40px', display: "flex", justifyContent: "center" }}>
                     <Button

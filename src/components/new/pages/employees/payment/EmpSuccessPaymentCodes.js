@@ -11,7 +11,7 @@ import DSnackbar from 'components/new/shared/DSnackbar';
 // Assets
 import theme from 'assets/theme';
 
-function EmpSuccessPaymentCodes({ codes }) {
+function EmpSuccessPaymentCodes({ codes, ticketType }) {
     const [snackBarData, setSnackBarData] = useState({
         show: false,
         data: {},
@@ -27,6 +27,12 @@ function EmpSuccessPaymentCodes({ codes }) {
             },
         });
     };
+
+    const columns = [
+        { title: 'شماره خرید' },
+        { title: ticketType === 'discount' ? 'کد تخفیف' : 'کد رهگیری' },
+        { title: 'بارکد' },
+    ];
 
     return (
         <Box sx={{ mt: '30px' }}>
@@ -69,7 +75,7 @@ function EmpSuccessPaymentCodes({ codes }) {
         </Box>
     );
 }
-const columns = [{ title: 'شماره خرید' }, { title: 'کد رهگیری' }, { title: 'بارکد' }];
+
 const tableHeadStyle = {
     backgroundColor: theme.main.palette.primary.light,
     textAlign: 'center',
