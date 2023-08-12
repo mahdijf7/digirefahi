@@ -125,7 +125,7 @@ const ServicesCategories = () => {
                                             <Grid item xs={12} sm={6} md={4} lg={3} key={supplier.id}>
                                                 <DItem
                                                     name={supplier.name}
-                                                    image={supplier.thumbnail}
+                                                    image={supplier.logo}
                                                     to={`/app/dashboard/services?suppliers=${supplier.id},${supplier.name}`}
                                                 />
                                             </Grid>
