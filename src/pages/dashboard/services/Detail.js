@@ -230,13 +230,14 @@ const EmployeeServiceDetail = () => {
                                     <Typography sx={{ fontSize: '14px' }}>
                                         استان خدمت:{' '}
                                         {service?.province &&
-                                            service?.province.map((item) => (
+                                            service?.province.map((item, index) => (
                                                 <Typography
                                                     key={item.id}
                                                     color="text.main"
                                                     component="span"
                                                     sx={{ fontSize: '14px' }}>
                                                     {item}
+                                                    {index + 1 !== service.province.length && ' / '}
                                                 </Typography>
                                             ))}
                                     </Typography>
