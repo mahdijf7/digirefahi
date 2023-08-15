@@ -467,7 +467,7 @@ const Ticket = () => {
                                                fontSize: "10px"
                                            }}>
                                            <p style={{fontWeight: 600}}>ضمیمه ها (1)</p>
-                                           <a href={item.file} style={downloadLinkStyle} target="_blank" download>
+                                           <a href={`${process.env.REACT_APP_STORAGE_URL}/${item.file}`} style={downloadLinkStyle} target="_blank" download>
                                                <span style={{marginLeft:5}}><DownloadIcon /></span> {item.file}
                                            </a>
 
@@ -542,7 +542,7 @@ const Ticket = () => {
                                            }}>
                                            <p style={{fontWeight: 600}}>ضمیمه ها (1)</p>
 
-                                           <a href={item.file} style={downloadLinkStyle} target="_blank" download>
+                                           <a href={`${process.env.REACT_APP_STORAGE_URL}/${item.file}`} style={downloadLinkStyle} target="_blank" download>
                                                <span style={{marginLeft:5}}><DownloadIcon /></span> {item.file}
                                            </a>
                                        </Box>}

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Box, TableCell, TableHead, TableRow, TableBody, Button, InputAdornment, Grid, Stack } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import SearchIcon from '@mui/icons-material/Search';
 import { Formik, Form } from 'formik';
@@ -43,7 +44,7 @@ const Employees = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { t } = useTranslation();
-    const [loading, setLoading] = useState({ initial: true, refresh: false });
+    const [loading, setLoading] = useState({ initial: true, refresh: false, excel: false });
     const [filters, setFilters] = useState({ page: searchParams.get('page') || 1, name: searchParams.get('name') || '' });
     const [totalPage, setTotalPage] = useState(1);
     const [addEmployeeDialogIsOpen, setAddEmployeeDialogIsOpen] = useState(false);
@@ -127,6 +128,26 @@ const Employees = () => {
         });
         setFilters({ ...filters });
     };
+    const downloadExcel = async () => {
+        if (loading.excel) return;
+        setLoading({ ...loading, excel: true });
+
+        await OrganizationService
+            .get(`employees-export`)
+            .then((res) => {
+                const link = document.createElement('a');
+                link.href = `${process.env.REACT_APP_STORAGE_URL}/${res.data.data}`;
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+            })
+            .catch((err) => {
+                console.log(5555555);
+            });
+
+        setLoading({ ...loading, excel: false });
+    };
+
 
     useEffect(() => {
         const controller = new AbortController();
@@ -134,7 +155,7 @@ const Employees = () => {
 
         (async () => {
             const params = new URLSearchParams();
-            params.append('page', filters.page);
+            params.append('page', filters.page); 
             filters.name && params.append(`name`, filters.name);
 
             navigate({
@@ -234,11 +255,24 @@ const Employees = () => {
                                 </TableBody>
                             </DTableWrapper>
                         </Grid>
-                        <Grid item xs={12} mt="20px" sx={{ display: 'flex', justifyContent: 'center' }}>
+                        <Grid item xs={12} mt="20px" sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+                            <LoadingButton
+                                variant="outlined"
+                                loading={loading.excel}
+                                sx={{ fontSize: '14px' }}
+                                onClick={downloadExcel}>
+                                خروجی اکسل
+                            </LoadingButton>
+
                             {totalPage > 1 && (
-                                <DPagination current={filters.page} totalPages={totalPage} onPageChange={handlePageChange} />
+                                <DPagination
+                                    current={filters.page}
+                                    sx={{ marginRight: 'auto' }}
+                                    totalPages={totalPage}
+                                    onPageChange={handlePageChange}
+                                />
                             )}
-                        </Grid>
+                        </Grid> 
                     </Grid>
                 </DLoadingWrapper>
             </DBox>

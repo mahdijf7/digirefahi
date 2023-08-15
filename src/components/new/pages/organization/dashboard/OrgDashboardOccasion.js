@@ -21,10 +21,10 @@ const OrgDashboardOccasion = ({ occasions }) => {
                         }}
                         key={`occasion-${index}`}>
                         <Typography sx={{ fontSize: '12px' }} noWrap={true}>
-                            {occasion.name}
+                            {occasion.firstname} {occasion.lastname}
                         </Typography>
                         <Typography sx={dateStyle}>
-                            {new Date(occasion.date).toLocaleDateString('fa-IR', { month: 'long', day: 'numeric' })}
+                            {new Date(occasion.birthday || occasion.married_date).toLocaleDateString('fa-IR', { month: 'long', day: 'numeric' })}
                         </Typography>
                     </Box>
                 ))}

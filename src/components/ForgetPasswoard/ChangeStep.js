@@ -129,8 +129,7 @@ function ChangeStep(props) {
                             1: (
                                 <Grid mt={'5%'} item xs={10}>
                                     <CustomInputBase
-                                        showlabel="true"
-                                        type="number"
+                                        showlabel="true" 
                                         name="mobile"
                                         icon={<MdiMobilePhone />}
                                         title={t('login.phoneNumber')}

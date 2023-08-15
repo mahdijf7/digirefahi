@@ -87,7 +87,16 @@ class OrganizationService {
     getCharts(filters, headers) {
         return useFetch.get(`${URL_PREFIX}charts?${filters}`, headers);
     }
-
+    createOrganizationUnit(data) {
+        return useFetch.post(`${URL_PREFIX}charts`, data);
+    }
+    deleteOrganizationUnit(chartId) {
+        return useFetch.delete(`${URL_PREFIX}charts/${chartId}`);
+    }
+    updateOrganizationUnit(chartId, params) {
+        return useFetch.post(`${URL_PREFIX}charts/${chartId}?${params}`);
+    }
+    
     // Group
     getGroups(filters, headers) {
         return useFetch.get(`${URL_PREFIX}groups?${filters}`, headers);

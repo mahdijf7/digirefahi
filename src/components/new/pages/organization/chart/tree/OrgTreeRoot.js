@@ -7,7 +7,6 @@ import * as React from 'react';
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 
 // Utils
-import adminService from 'service/api/adminService';
 import theme from 'assets/theme';
 
 // Components
@@ -49,7 +48,7 @@ const OrgTreeRoot = ({
     };
 
     const childSaved = (child) => {
-        console.log('step 1', child, children);
+       
         const newChildren = children.map((item) => {
             if (item.id === child.oldId) {
                 item = child;
@@ -58,9 +57,9 @@ const OrgTreeRoot = ({
             }
             return item;
         });
-        console.log('step 2');
+ 
         setChildren(newChildren);
-        console.log('root');
+  
         setSnackBarData({
             show: true,
             data: {
@@ -84,16 +83,16 @@ const OrgTreeRoot = ({
     };
 
     const childUpdated = (child) => {
-        console.log('step 1', child, children);
+     
         const newChildren = children.map((item) => {
             if (item.id === child.id) {
                 item = child;
             } 
             return item;
         });
-        console.log('step 2');
+     
         setChildren(newChildren);
-        console.log('root');
+   
         setSnackBarData({
             show: true,
             data: {

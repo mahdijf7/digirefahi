@@ -568,7 +568,7 @@ const OrganizationBasicServiceFilter = () => {
                                                             </TableCell>
                                                             <TableCell style={tableCellStyle}>
                                                                 <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
-                                                                    <img src={`${process.env.REACT_APP_STORAGE_URL}/${service.thumbnail}`} style={{
+                                                                    <img src={`${process.env.REACT_APP_STORAGE_URL}/${service.image}`} style={{
                                                                         maxHeight: '30px',
                                                                         marginLeft: '10px',
                                                                         borderRadius: '5px'
