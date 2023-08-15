@@ -68,11 +68,11 @@ function ProfileEdit() {
         values.phone && fd.append('phone', values.phone);
         values.postal_code && fd.append('postal_code', values.postal_code);
         values.address && fd.append('address', values.address);
-        values.province_id && fd.append('province_id', values.province_id);
-        values.city_id && fd.append('city_id', values.city_id);
+        values.province && fd.append('province_id', values.province.id);
+        values.city && fd.append('city_id', values.city.id);
         values.second_address && fd.append('second_address', values.second_address);
         values.newspaper_image && fd.append('newspaper_image', values.newspaper_image);
-        values.logo && fd.append('logo', values.logo);
+        fd.append('logo', values.logo || '');
 
         updateLegalDetail(fd, actions);
     };
