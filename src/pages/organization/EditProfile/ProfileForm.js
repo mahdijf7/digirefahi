@@ -160,7 +160,7 @@ function ProfileDetailsForm(props) {
 
                         <Grid item mt="1rem" xs={10} sm={5.1}>
                             <DAutoComplete
-                                name="province_id"
+                                name="province"
                                 formControlStyle={inputStyle}
                                 weight
                                 label={t('profile.province')}
@@ -171,24 +171,24 @@ function ProfileDetailsForm(props) {
                                 callOnOpen
                                 apiPath={`province`}
                                 onSelect={() => {
-                                    setFieldValue('city_id', '');
+                                    setFieldValue('city', '');
                                     autocompleteRef.current && autocompleteRef.current.reset();
                                 }}
                             />
                         </Grid>
                         <Grid item mt="1rem" xs={10} sm={5.1}>
                             <DAutoComplete
-                                name="city_id"
+                                name="city"
                                 ref={autocompleteRef}
                                 formControlStyle={inputStyle}
                                 label={t('profile.city')}
                                 weight
-                                buttonProps={{ label: values.province_id ? 'شهر' : 'اول استان را انتخاب کنید' }}
+                                buttonProps={{ label: values.province ? 'شهر' : 'اول استان را انتخاب کنید' }}
                                 placeholder="جستجوی شهر"
-                                isDisabled={!values.province_id}
+                                isDisabled={!values.province}
                                 isAsync
                                 singleCall
-                                apiPath={`city/${values.province_id && values.province_id.id}`}
+                                apiPath={`city/${values.province && values.province.id}`}
                             />
                         </Grid>
                         <Grid item mt="1rem" xs={10} sm={12}>
