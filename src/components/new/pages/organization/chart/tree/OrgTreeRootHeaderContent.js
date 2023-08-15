@@ -10,6 +10,7 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 
 // Utils
+import organizationService from 'service/api/organization.service';
 import adminService from 'service/api/adminService';
 import theme from 'assets/theme';
 import { getErrorForSnackbar } from 'utils/helpers';
@@ -58,7 +59,6 @@ const OrgTreeRootHeaderContent = ({
     const callThisAction = (e, actionKey) => {
         stopEvent(e);
         if (actionKey === 'delete') {
-            console.log('root', root);
             setShowDeleteCategoryDialog(true);
         } else if (actionKey === 'seeServices') {
             onActionSelected(actionKey, actions[actionKey].emitData);
@@ -82,7 +82,7 @@ const OrgTreeRootHeaderContent = ({
         if (parentId) formData.append('parent_id', parentId);
         if (companyId) formData.append('company_id', companyId);
 
-        await adminService
+        await organizationService
             .createOrganizationUnit(formData)
             .then((res) => {
                 onCreate({ oldId: root.id, ...res.data.data });
@@ -109,7 +109,7 @@ const OrgTreeRootHeaderContent = ({
         params.append('_method', 'put');
         if (categoryName) params.append('name', categoryName);
 
-        await adminService
+        await organizationService
             .updateOrganizationUnit(root.id, params)
             .then((res) => {
                 setShowUpdateMode(false);
@@ -130,14 +130,14 @@ const OrgTreeRootHeaderContent = ({
         setLoading({ ...loading, update: false });
     };
     const deleteCategory = async () => {
-        console.log('delete root', root);
+        
         if (root.isNew) {
             onDelete(root);
         } else {
             if (loading.delete) return;
             setLoading({ delete: true });
 
-            await adminService
+            await organizationService
                 .deleteOrganizationUnit(root.id)
                 .then((res) => {
                     setShowDeleteCategoryDialog(false);
