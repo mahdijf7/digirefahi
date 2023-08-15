@@ -201,8 +201,7 @@ function EmployeeInfoDialogUserInfo({ employeeId, onClose, onSave }) {
                                         </Grid>
                                         <Grid item mt="1rem" xs={10} sm={5.6}>
                                             <CustomInputBase
-                                                name="mobile"
-                                                type="number"
+                                                name="mobile" 
                                                 showlabel="true"
                                                 title={t('profile.phoneNumber')}
                                                 placeholder={t('profile.phoneNumber')}
