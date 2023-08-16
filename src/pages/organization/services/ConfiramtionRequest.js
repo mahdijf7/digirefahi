@@ -9,7 +9,7 @@ import DBox from '../../../components/new/shared/DBox';
 import DLoadingWrapper from '../../../components/new/shared/DLoadingWrapper';
 import DTableWrapper from '../../../components/new/shared/DTable/DTableWrapper';
 import React, { useState } from 'react';
-import { ColorWhite } from '../../../assets/theme/color'; 
+import { ColorWhite } from '../../../assets/theme/color';
 import { getErrorForSnackbar } from '../../../utils/helpers';
 import DSnackbar from '../../../components/new/shared/DSnackbar';
 import OrganizationService from '../../../service/api/organization.service';
@@ -26,9 +26,9 @@ const DAcceptDialog = ({ title, loading, onClose, onAccept, service, count }) =>
         { title: 'استان خدمت' },
         { title: 'قیمت واحد (تومان)' },
         { title: 'تعداد' },
-        { title: 'مبلغ کل (تومان)' }, 
+        { title: 'مبلغ کل (تومان)' },
     ];
-    const createServiceRequest = async (status) => { 
+    const createServiceRequest = async (status) => {
         const formData = new FormData();
         formData.append('service_id', service.id);
         formData.append('count', count);
@@ -85,12 +85,19 @@ const DAcceptDialog = ({ title, loading, onClose, onAccept, service, count }) =>
                                             <TableRow>
                                                 <TableCell style={tableCellStyle}>{service.name}</TableCell>
                                                 <TableCell style={tableCellStyle}>{service.supplier.name}</TableCell>
-                                                <TableCell style={tableCellStyle}>{service.province[0].name}</TableCell>
+                                                <TableCell style={tableCellStyle}>
+                                                    {service.province && service.province.length === 0 && '---'}
+                                                    <Box sx={{ display: 'grid' }}>
+                                                        {service.province.map((province) => {
+                                                            return <Typography>{province.name}</Typography>;
+                                                        })}
+                                                    </Box>
+                                                </TableCell>
                                                 <TableCell style={tableCellStyle}>{service.price.toLocaleString()}</TableCell>
                                                 <TableCell style={tableCellStyle}>{count}</TableCell>
                                                 <TableCell style={tableCellStyle}>
                                                     {(service.price * count).toLocaleString()}
-                                                </TableCell> 
+                                                </TableCell>
                                             </TableRow>
                                         </TableBody>
                                     </DTableWrapper>
@@ -137,7 +144,7 @@ const wrapperStyles = {
     display: 'flex',
     flexDirection: 'column',
     padding: '0',
-} 
+};
 const tableHeadStyle = {
     backgroundColor: 'rgba(237, 251, 255, 1)',
     textAlign: 'center',
