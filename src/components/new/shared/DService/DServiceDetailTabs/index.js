@@ -36,9 +36,9 @@ const DServiceDetailTabs = ({ service }) => {
 
             <DTabsPanel value={1} index={activeTabId}>
                 <Box sx={{ pt: '18px' }}>
-                    <Typography color="text.main" sx={{ fontSize: '13px', lineHeight: '26px', textAlign: 'justify' }}>
+                    <Box color="text.main" sx={{ fontSize: '13px', lineHeight: '26px', textAlign: 'justify' }}>
                         <div dangerouslySetInnerHTML={{ __html: content?.long_description || long_description }} />
-                    </Typography>
+                    </Box>
                 </Box>
             </DTabsPanel>
             <DTabsPanel value={2} index={activeTabId}>
