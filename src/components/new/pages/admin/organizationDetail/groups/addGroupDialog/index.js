@@ -81,7 +81,7 @@ const AddGroupDialog = ({ onClose, onSave }) => {
                 onSave();
             })
             .catch((err) => {
-                console.log(err, 123);
+          
                 const errorMsg = err?.response?.data?.message;
                 errorMsg &&
                     setSnackBarData({
@@ -105,7 +105,7 @@ const AddGroupDialog = ({ onClose, onSave }) => {
                 setIsRefreshing(false);
             })
             .catch((err) => {
-                console.log('error occured!');
+         
             });
     };
     useEffect(() => {

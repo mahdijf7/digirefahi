@@ -96,7 +96,7 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
                 }
             })
             .catch((err) => {
-                console.log(5555555);
+            
             });
 
         setLoading({ ...loading, upload: false });
@@ -110,7 +110,7 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
         setLoading({ ...loading, filter: true });
 
         if (formikApis?.setFieldValue) {
-            console.log(1234, values);
+        
             formikApis.setFieldValue('employees', []);
             formikApis.setFieldValue('employeeExceptions', []);
             formikApis.setFieldValue('selectAll', false) 
@@ -146,7 +146,7 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
                 });
             }
             if (filters.chart) params.append('chart_id', filters.chart.id);
-            console.log(filters, 88);
+       
             await OrganizationService.get(`employees?${params.toString()}`)
                 .then((res) => {
                     setEmployees(res.data.data);
@@ -154,7 +154,7 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
                     setTotalEmployees(res.data.meta.total);
                 })
                 .catch((err) => {
-                    console.log(5555555);
+                 
                 });
             setLoading({
                 ...loading,
@@ -499,7 +499,7 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
                                                                             );
                                                                         }
                                                                     } else {
-                                                                        console.log('employee toggled');
+                                                                       
                                                                         const employeeAlreadySelected =
                                                                             values.employees.filter(
                                                                                 (item) => item.id === selectedEmployee.id
@@ -511,7 +511,7 @@ const OrgAllocateEmployeeSelection = ({ onEmployeeToggled }) => {
                                                                             : [...values.employees, selectedEmployee];
                                                                         setFieldValue('employees', newEmployeesArray);
 
-                                                                        console.log(newEmployeesArray,876);
+                                                                      
                                                                         employeeSelcetionChanged(
                                                                             {
                                                                                 ...values,

@@ -35,7 +35,7 @@ const EmployeeInfoDialogWallet = ({ employeeId }) => {
                 setLoading(false);
             })
             .catch((err) => {
-                console.log(err);
+       
                 setLoading(false);
             });
     };

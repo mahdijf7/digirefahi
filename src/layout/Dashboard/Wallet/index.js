@@ -19,12 +19,10 @@ function Wallet(props) {
             .getWallet()
             .then((res) => {
                 setLoading(false);
-                setWallet(res.data.data);
-                console.log(res.data.data, 'getting data of wallet');
+                setWallet(res.data.data); 
             })
             .catch((err) => {
-                setLoading(false);
-                console.log(err);
+                setLoading(false); 
             });
     };
 

@@ -41,10 +41,7 @@ const EmployeeServiceDetail = () => {
         buyButtonLabel = 'تخصیص خدمت';
     } else {
         buyButtonLabel = service?.ticket_type?.slug === 'discount' ? 'خرید کد تخفیف' : 'خرید خدمت';
-    }
-    const maxAllowedOrderCount = service.order_limit || service.value;
-
-    console.log(window.location);
+    } 
 
     const sendRequest = async (values) => {
         if (service?.type === 'COMPANY') {
@@ -138,8 +135,7 @@ const EmployeeServiceDetail = () => {
                         { title: res.data.data.name },
                     ]);
                 })
-                .catch((err) => {
-                    console.log(5555555);
+                .catch((err) => { 
                 });
 
             setLoading({

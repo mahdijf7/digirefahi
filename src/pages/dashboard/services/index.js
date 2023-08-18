@@ -43,7 +43,7 @@ const Services = () => {
         provinces: modifyArraySearchParam(searchParams.getAll('provinces')),
         // price: searchParams.get('price') ? prices.filter((item) => item.id === +searchParams.get('price'))[0] : '',
     });
-    console.log(filters, 123);
+    
 
     const handlePageChange = (newPage) => {
         if (loading.page) return;
@@ -105,8 +105,7 @@ const Services = () => {
                     setServices(res.data.data);
                     setTotalPage(res.data.meta.last_page);
                 })
-                .catch((err) => {
-                    console.log(5555555);
+                .catch((err) => { 
                 });
 
             setLoading({
@@ -224,8 +223,7 @@ const Services = () => {
                                                                     startIcon={
                                                                         <DeleteOutlineIcon sx={{ margin: '0 0 0 1rem' }} />
                                                                     }
-                                                                    onClick={() => {
-                                                                        console.log(111);
+                                                                    onClick={() => { 
                                                                         resetForm({
                                                                             values: {
                                                                                 suppliers: [],

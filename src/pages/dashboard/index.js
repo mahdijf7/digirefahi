@@ -33,8 +33,7 @@ const Dashboard = () => {
         (async () => {
             await dashboardService
                 .get(`dashboard`, { signal })
-                .then((res) => {
-                    console.log(res);
+                .then((res) => { 
 
                     setDashboard(res.data.data);
                 })

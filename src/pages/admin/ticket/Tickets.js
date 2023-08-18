@@ -70,11 +70,10 @@ const Tickets = () => {
     });
 
     const handleFilterSubmit = async (values) => {
-        console.log(values, 'VALUES OF SEARCH ');
+    
         const name = values.name;
 
-        setFilters({ ...filters, name });
-        console.log(filters.name, 'FILTER NAME');
+        setFilters({ ...filters, name }); 
     };
     const handlePageChange = (newPage) => {
         if (loading.refresh) return;
@@ -107,8 +106,7 @@ const Tickets = () => {
         });
     };
 
-    useEffect(() => {
-        console.log(loading, 1234);
+    useEffect(() => { 
         (async () => {
             const params = new URLSearchParams();
             params.append('page', filters.page);

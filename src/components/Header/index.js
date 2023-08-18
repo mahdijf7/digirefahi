@@ -20,7 +20,7 @@ const Header = () => {
     const location = useLocation();
     const isAdmin = location.pathname.startsWith('/app/admin');
     const isOrganization = location.pathname.startsWith('/app/organization');
-    console.log(account, 123);
+   
     return (
         <AppBar
             position="sticky"

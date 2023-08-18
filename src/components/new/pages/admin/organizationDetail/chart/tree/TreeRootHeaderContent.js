@@ -144,7 +144,7 @@ const CategoryTreeRootHeaderContent = ({
                     onDelete(root, true);
                 })
                 .catch((err) => {
-                    console.log('error occured!');
+            
                 });
         }
     };

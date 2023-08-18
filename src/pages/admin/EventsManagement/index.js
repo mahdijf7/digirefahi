@@ -60,7 +60,7 @@ function EventsManagement() {
     };
 
     const handleDelete = (id) => {
-        console.log(id, 'ID OF HANDLE DELETE');
+    
         openDeleteCategoryDialog(id);
     };
 
@@ -84,7 +84,7 @@ function EventsManagement() {
                 });
             })
             .catch((err) => {
-                console.log('error occured!');
+       
             });
     };
     const getEvents = async () => {

@@ -40,7 +40,7 @@ function LegalDetails({ companyId }) {
 
     const fd = new FormData();
     const handleSubmit = async (values, actions) => {
-        console.log(values);
+ 
         fd.append('_method', 'put');
         fd.append('tab', 'detail');
         fd.append('name', values.name);

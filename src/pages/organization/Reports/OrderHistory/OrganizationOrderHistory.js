@@ -62,16 +62,14 @@ function OrganizationOrderHistory(props) {
     queryString.append('page', filters.page);
     filters.name && queryString.append('name', filters.name);
 
-    const getTransactions = async () => {
-        console.log('run getting the data');
+    const getTransactions = async () => { 
         setLoading({
             ...loading,
             refresh: true,
         });
         await organizationService
             .get(`orders?${queryString}`)
-            .then((res) => {
-                console.log(res.data.data);
+            .then((res) => { 
                 setLoading({
                     initial: false,
                     refresh: false,
@@ -80,8 +78,7 @@ function OrganizationOrderHistory(props) {
                 setTransactions(res.data.data);
                 setTotalPage(res.data.meta.last_page);
             })
-            .catch((err) => {
-                console.log(err, 'ERROR FROM TABEL TRANSACTION');
+            .catch((err) => { 
                 setLoading({
                     initial: false,
                     refresh: false,

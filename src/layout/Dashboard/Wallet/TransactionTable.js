@@ -51,7 +51,7 @@ const TransactionTable = ({ employeeId }) => {
         await userService
             .get(`/employee/transactions?${queryString}`)
             .then((res) => {
-                console.log(res?.data, 'DATA THAT  WE WERE GETTING');
+              
                 setTransactions(res?.data?.data);
                 setTotalPage(res.data.meta.last_page);
                 setLoading({
@@ -60,7 +60,7 @@ const TransactionTable = ({ employeeId }) => {
                 });
             })
             .catch((err) => {
-                console.log(err, 'ERROR FROM TABEL TRANSACTION');
+               
                 setLoading({
                     initial: false,
                     refresh: false,

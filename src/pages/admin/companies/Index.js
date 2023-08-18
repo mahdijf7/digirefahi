@@ -110,7 +110,7 @@ const Companies = () => {
                 link.remove();
             })
             .catch((err) => {
-                console.log(5555555);
+           
             });
 
         setLoading({ ...loading, excel: false });
@@ -142,7 +142,7 @@ const Companies = () => {
                     setTotalPage(res.data.meta.last_page);
                 })
                 .catch((err) => {
-                    console.log('error occured!');
+                 
                 });
             setLoading({ initial: false, refresh: false });
         })();

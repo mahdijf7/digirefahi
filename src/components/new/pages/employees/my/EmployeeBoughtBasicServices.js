@@ -39,7 +39,7 @@ const EmployeeBoughtBasicServices = () => {
                     setTotalPage(res.data.meta.last_page);
                 })
                 .catch((err) => {
-                    console.log(5555555);
+                 
                 });
 
             setLoading({

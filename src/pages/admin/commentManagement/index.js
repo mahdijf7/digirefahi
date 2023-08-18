@@ -64,7 +64,7 @@ function CommentManagement(props) {
                 setLoading({ initial: false, refresh: false });
             })
             .catch((err) => {
-                console.log('error occured!');
+          
             });
     };
     useEffect(() => {
