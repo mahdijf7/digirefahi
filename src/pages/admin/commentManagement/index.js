@@ -72,7 +72,7 @@ function CommentManagement(props) {
     }, [filters]);
 
     return (
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: 'مدیریت نظرات' }}>
             <Breadcrumb links={breadCrumbLinks} />
             <Box
                 className={loading.refresh && 'box--isLoading'}

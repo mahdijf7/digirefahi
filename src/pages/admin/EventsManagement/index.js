@@ -117,7 +117,7 @@ function EventsManagement() {
     }, [filters]);
 
     return (
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: 'مدیریت رویدادها' }}>
             <Breadcrumb links={breadCrumbLinks} />
             <DBox sx={{ p: '24px 30px', mt: '22px' }} className={loading.refresh && 'box--isLoading'}>
                 <DLoadingWrapper loading={loading.initial}>

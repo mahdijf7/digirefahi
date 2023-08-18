@@ -147,7 +147,7 @@ function ServiceList(props) {
     };
 
     return (
-        <DashboardCard pt="22px">
+        <DashboardCard pt="22px" meta={{ title: 'لیست خدمات رفاهی' }}>
             <Breadcrumb links={breadCrumbLinks} />
 
             <DBox sx={{ p: '24px 30px', mt: '22px' }}>

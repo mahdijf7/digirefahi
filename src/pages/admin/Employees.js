@@ -176,7 +176,7 @@ const Employees = () => {
     }, [filters]);
 
     return (
-        <DashboardCard pt="2rem" sx={styleCard}>
+        <DashboardCard pt="2rem" sx={styleCard} meta={{ title: 'مدیریت کارمندان' }}>
             <Breadcrumb links={breadCrumbLinks} />
 
             <DBox sx={{ mt: '2rem', p: '26px 29px' }} className={loading.refresh && 'box--isLoading'}>

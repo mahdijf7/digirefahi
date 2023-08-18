@@ -475,7 +475,7 @@ const ServiceFilterPage = () => {
 
     return (
 
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: 'فیلتر خدمات' }}>
             <Breadcrumb links={breadCrumbLinks} />
 
             <DLoadingWrapper loading={loading.initial}>

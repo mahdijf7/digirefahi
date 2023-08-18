@@ -150,7 +150,7 @@ const Companies = () => {
         return () => controller.abort();
     }, [filters]);
     return (
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: 'مدیریت سازمان‌ها' }}>
             <Breadcrumb links={breadCrumbLinks} />
 
             <DBox sx={{ marginTop: '2rem', padding: '30px' }} className={loading.refresh && 'box--isLoading'}>

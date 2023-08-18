@@ -206,7 +206,7 @@ function NewService(props) {
     }, []);
 
     return (
-        <DashboardCard pt="22px">
+        <DashboardCard pt="22px" meta={{ title: 'تعریف خدمت جدید' }}>
             <Breadcrumb links={breadCrumbLinks} />
             <Box sx={{ mt: '22px' }}>
                 <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={newServiceSchemas}>

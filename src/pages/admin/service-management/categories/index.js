@@ -141,7 +141,7 @@ const AdminCategories = () => {
     }, []);
 
     return (
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: 'دسته‌بندی خدمات' }}>
             <Grid container>
                 <Grid item xs={12}>
                     <Breadcrumb links={breadCrumbLinks} />
