@@ -1,18 +1,31 @@
-import { Typography, Box } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Typography, Box, darken } from '@mui/material';
 
 // Components
 import DBox from 'components/new/shared/DBox';
+let moment = require('moment-jalaali');
+moment.loadPersian({dialect: 'persian-modern'});
 
 const OrgDashboardOccasion = ({ occasions }) => {
     return (
-        <DBox sx={{ p: '24px 26px 21px 26px' }}>
-            <Typography sx={{ fontSize: '20px' }}>مناسبت های این ماه </Typography>
-            <Box sx={{ display: 'grid', mb: '30px', mt: '14px' }}>
+        <DBox sx={{ pb: '20px' }}>
+            <Typography sx={{ fontSize: '20px', mt: '24px', pr: '26px' }}>مناسبت های این ماه </Typography>
+            <Box sx={{ display: 'grid', mt: '14px', maxHeight: '150px', overflow: 'auto', p: '0 26px' }}>
+                {occasions.length === 0 && (
+                    <Typography
+                        color="primary"
+                        sx={{
+                            fontSize: '11px',
+                        }}>
+                        مناسبتی برای نمایش وجود ندارد.
+                    </Typography>
+                )}
                 {occasions.map((occasion, index) => (
                     <Box
                         sx={{
                             borderBottom: '1px solid #EEEEEE',
+                            '&:last-child': {
+                                border: 'none',
+                            },
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'space-between',
@@ -21,10 +34,11 @@ const OrgDashboardOccasion = ({ occasions }) => {
                         }}
                         key={`occasion-${index}`}>
                         <Typography sx={{ fontSize: '12px' }} noWrap={true}>
-                            {occasion.firstname} {occasion.lastname}
+                            {occasion.type === 'birthday' ? 'تولد' : 'سالگرد ازدواج'} {occasion.firstname} {occasion.lastname}
                         </Typography>
                         <Typography sx={dateStyle}>
-                            {new Date(occasion.birthday || occasion.married_date).toLocaleDateString('fa-IR', { month: 'long', day: 'numeric' })}
+                            {new Intl.DateTimeFormat('fa-IR', {month: 'long', day: 'numeric'}).format(new Date(occasion.date))}
+                             
                         </Typography>
                     </Box>
                 ))}
