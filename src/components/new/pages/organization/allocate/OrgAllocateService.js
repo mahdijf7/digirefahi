@@ -12,7 +12,6 @@ import DServiceBox from 'components/new/shared/DServiceBox';
 import DPagination from 'components/new/shared/DPagination/Index';
 import { OrgAllocateServiceStats } from 'components/new/pages/organization/allocate/OrgAllocateServiceStats';
 import CustomInputBase from 'components/Common/Form/CustomInputBase';
-import CustomCheckbox from 'components/Common/Form/CustomChekbox';
 
 // Assets
 import theme from 'assets/theme';

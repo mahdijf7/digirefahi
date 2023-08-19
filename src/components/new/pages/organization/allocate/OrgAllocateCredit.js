@@ -12,7 +12,6 @@ import AuthContext from 'store/Auth-context';
 import { OrgAllocateCreditCategory } from 'components/new/pages/organization/allocate/OrgAllocateCreditCategory';
 import { OrgAllocateCreditStats } from 'components/new/pages/organization/allocate/OrgAllocateCreditStats';
 import CustomInputBase from 'components/Common/Form/CustomInputBase';
-import CustomCheckbox from 'components/Common/Form/CustomChekbox';
 
 // Assets
 import theme from 'assets/theme';

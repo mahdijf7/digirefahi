@@ -76,7 +76,7 @@ import SupplierAccount from 'pages/supplier/Account';
 // Public Pages
 import Login from './pages/login';
 import NotFound from './pages/404';
-import Error500 from './pages/500/index';
+import Error500 from './pages/500';
 import ForgetPassword from './pages/forget-password/index';
 import { CircularProgress, Box } from '@mui/material';
 import Tickets from './pages/organization/ticket/Tickets';
