@@ -128,7 +128,7 @@ const OrganizationServiceBasic = () => {
     }, [filters, page]);
 
     return (
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: 'خدمات عمومی' }}>
             <Breadcrumb links={breadCrumbLinks} />
             <DBox className={loading.page && 'box--isLoading'} sx={{ mt: '2rem' }}>
                 <DLoadingWrapper loading={loading.initial} sx={{ p: '32px 0' }}>

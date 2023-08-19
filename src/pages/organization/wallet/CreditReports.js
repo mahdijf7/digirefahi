@@ -89,7 +89,7 @@ const CreditReports = () => {
     }, []);
 
     return (
-        <DashboardCard pt="2rem" sx={styleCard}>
+        <DashboardCard pt="2rem" sx={styleCard} meta={{ title: 'گزارش کیف پول' }}>
             <Breadcrumb links={breadCrumbLinks} />
 
             <DBox sx={{ mt: '2rem', p: '26px 29px' }}>

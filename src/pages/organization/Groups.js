@@ -168,7 +168,7 @@ const Groups = ({}) => {
     }, [filters]);
 
     return (
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: 'مدیریت گروه‌ها ' }}>
             <Breadcrumb links={breadCrumbLinks} />
             <DBox className={loading.refresh && 'box--isLoading'} sx={{ mt: '2rem', p: '26px 29px' }}>
                 <DLoadingWrapper loading={loading.initial}>

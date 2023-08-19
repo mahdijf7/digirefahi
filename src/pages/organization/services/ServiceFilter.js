@@ -429,7 +429,7 @@ const OrganizationBasicServiceFilter = () => {
 
     return (
 
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: 'فیلتر خدمات عمومی' }}>
             <Breadcrumb links={breadCrumbLinks} />
 
             <DLoadingWrapper loading={loading.initial}>

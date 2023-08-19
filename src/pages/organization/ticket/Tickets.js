@@ -184,7 +184,7 @@ const Tickets = () => {
     };
 
     return (
-        <DashboardCard pt="2rem" sx={styleCard}>
+        <DashboardCard pt="2rem" sx={styleCard} meta={{ title: 'پشتیبانی' }}>
             <Breadcrumb links={breadCrumbLinks} />
             {/*{showDeleteDialog && (*/}
             {/*    <DDeleteDialog loading={loading.delete} title="درخواست" onDelete={deleteRequest} onClose={closeDeleteDialog} />*/}

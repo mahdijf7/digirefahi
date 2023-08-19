@@ -149,7 +149,7 @@ function ManagmentBanner(props) {
     }, [filters]);
 
     return (
-        <DashboardCard pt="24px">
+        <DashboardCard pt="24px" meta={{ title: 'مدیریت بنرها' }}>
             <Breadcrumb links={breadCrumbLinks} />
             <DLoadingWrapper loading={loading.initial}>
                 <DBox sx={{ mt: '24px', p: '24px 30px' }} className={loading.refresh && 'box--isLoading'}>

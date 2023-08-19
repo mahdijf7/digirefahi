@@ -188,7 +188,7 @@ const ServicesRequests = () => {
     }, [filtersOrg]);
 
     return (
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: 'خدمات سازمانی' }}>
             <Breadcrumb links={breadCrumbLinks} />
 
             <DBox className={loading.page && 'box--isLoading'} sx={{ mt: '2rem', p: '26px 29px' }}>
