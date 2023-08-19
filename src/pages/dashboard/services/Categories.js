@@ -27,8 +27,7 @@ const ServicesCategories = () => {
                 .then((res) => {
                     setCategories(res.data.data);
                 })
-                .catch((err) => {
-                    console.log(5555555);
+                .catch((err) => { 
                 });
 
             setLoading({

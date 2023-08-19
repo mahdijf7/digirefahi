@@ -57,8 +57,7 @@ export const getWalletData = () => {
       await userService.getWallet();
     };
     try {
-      const res = await getWalletData();
-      // console.log(res, 'slice');
+      const res = await getWalletData(); 
       dispatch(
         setLoading({
           loading: false,

@@ -69,8 +69,7 @@ function ManagmentBanner(props) {
         setOpenUpdateBanner(false);
     };
 
-    const handleDelete = (id) => {
-        console.log(id, 'ID OF HANDLE DELETE');
+    const handleDelete = (id) => { 
         openDeleteCategoryDialog(id);
     };
 
@@ -103,8 +102,7 @@ function ManagmentBanner(props) {
 
                 setFilters({ ...filters, page: 1 });
             })
-            .catch((err) => {
-                console.log('error occured!');
+            .catch((err) => { 
             });
     };
 
@@ -120,7 +118,7 @@ function ManagmentBanner(props) {
     queryString.append('page', filters.page);
 
     const getBannerData = async (newpage = 1) => {
-        console.log('run getting the data');
+       
         setLoading({
             ...loading,
             refresh: true,
@@ -128,7 +126,7 @@ function ManagmentBanner(props) {
         await organizationService
             .get(`banners?${queryString}`)
             .then((res) => {
-                console.log(res.data.data, 'ggetting the banner data');
+          
                 setLoading({
                     initial: false,
                     refresh: false,
@@ -138,7 +136,7 @@ function ManagmentBanner(props) {
                 setTotalPage(res.data.meta.last_page);
             })
             .catch((err) => {
-                console.log(err, 'ERROR FROM TABEL TRANSACTION');
+             
                 setLoading({
                     initial: false,
                     refresh: false,
@@ -151,7 +149,7 @@ function ManagmentBanner(props) {
     }, [filters]);
 
     return (
-        <DashboardCard pt="24px">
+        <DashboardCard pt="24px" meta={{ title: 'مدیریت بنرها' }}>
             <Breadcrumb links={breadCrumbLinks} />
             <DLoadingWrapper loading={loading.initial}>
                 <DBox sx={{ mt: '24px', p: '24px 30px' }} className={loading.refresh && 'box--isLoading'}>

@@ -7,7 +7,6 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import DAutoComplete from 'components/new/shared/Form/DAutoComplete';
 import CustomInputBase from 'components/Common/Form/CustomInputBase';
 import JalaliDatePicker from 'components/Common/Form/JalaliDatePicker';
-import CustomCheckbox from 'components/Common/Form/CustomChekbox';
 
 // Assets
 import theme from 'assets/theme';

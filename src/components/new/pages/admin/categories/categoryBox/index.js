@@ -102,7 +102,7 @@ const CategoryBox = ({ addBox, isSelected, defaultValues = {}, onCancel, onDelet
                 });
             })
             .catch((err) => {
-                console.log('error occured!');
+          
             });
 
         setLoading({ update: false });

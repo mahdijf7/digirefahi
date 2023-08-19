@@ -27,7 +27,7 @@ const NewServiceSwiper = ({ document, setDocument, serviceData, uploadImage, set
     };
 
     const handleItemClick = (item, i) => {
-        console.log(item, i);
+    
         setSelectedItem((prev) => item);
         setSelectedItemIndex((prev) => i);
     };
@@ -220,7 +220,7 @@ const buttonStyle = {
 //         const filteredData = document.filter((item, i) => selectedItem !== item);
 //         setUploadImage(filteredData);
 //         setDocument(filteredData);
-//         console.log(filteredData);
+ 
 //     };
 
 //     const handleImageSelect = (file) => {

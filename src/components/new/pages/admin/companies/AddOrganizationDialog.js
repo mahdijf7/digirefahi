@@ -44,7 +44,7 @@ const AddOrganizationDialog = ({ onClose, onChange, setSnackBarData }) => {
     const [loading, setLoading] = useState({ save: false });
     const { t } = useTranslation();
 
-    const createCompany = async (values) => {
+    const createCompany = async (values, actions) => {
         if (loading.save) return;
         setLoading({ save: true });
 
@@ -76,14 +76,14 @@ const AddOrganizationDialog = ({ onClose, onChange, setSnackBarData }) => {
                 setSnackBarData({
                     show: true,
                     data: {
-                        text: err?.message,
+                        text: err?.response?.data?.massage || 'ارسال با خطا مواجه شد',
                         type: 'error',
                     },
                 });
-            });
-        setTimeout(() => {
-            setSnackBarData({ show: false, data: null });
-        }, 3000);
+                if (err?.response.status === 422) actions.setErrors(err?.response?.data?.data);
+            }); 
+
+            setLoading({ save: false });
     };
 
     return (

@@ -64,7 +64,7 @@ function CommentManagement(props) {
                 setLoading({ initial: false, refresh: false });
             })
             .catch((err) => {
-                console.log('error occured!');
+          
             });
     };
     useEffect(() => {
@@ -72,7 +72,7 @@ function CommentManagement(props) {
     }, [filters]);
 
     return (
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: 'مدیریت نظرات' }}>
             <Breadcrumb links={breadCrumbLinks} />
             <Box
                 className={loading.refresh && 'box--isLoading'}

@@ -47,8 +47,7 @@ const BannerService = ({ open, handleOpen, handleClose }) => {
         setIsOpen(false);
     };
 
-    const handleDelete = (id) => {
-        console.log(id, 'ID OF HANDLE DELETE');
+    const handleDelete = (id) => { 
         openDeleteCategoryDialog(id);
     };
 
@@ -97,8 +96,7 @@ const BannerService = ({ open, handleOpen, handleClose }) => {
     queryString.append('page', filters.page);
     queryString.append('company_id', companyId);
 
-    const getBannerData = async (newpage = 1) => {
-        console.log('run getting the data');
+    const getBannerData = async (newpage = 1) => { 
         setLoading({
             ...loading,
             refresh: true,
@@ -106,7 +104,7 @@ const BannerService = ({ open, handleOpen, handleClose }) => {
         await adminService
             .getBannerService(queryString)
             .then((res) => {
-                console.log(res.data.data);
+             
                 setLoading({
                     initial: false,
                     refresh: false,
@@ -115,8 +113,7 @@ const BannerService = ({ open, handleOpen, handleClose }) => {
                 setServices(res.data.data);
                 setTotalPage(res.data.meta.last_page);
             })
-            .catch((err) => {
-                console.log(err, 'ERROR FROM TABEL TRANSACTION');
+            .catch((err) => { 
                 setLoading({
                     initial: false,
                     refresh: false,

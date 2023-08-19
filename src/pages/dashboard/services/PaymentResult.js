@@ -32,8 +32,7 @@ const PaymentResult = () => {
                     setOrder(res.data.data);
                     setBreadCrumbLinks([...breadCrumbLinks, { title: res.data.data.service.name }]);
                 })
-                .catch((err) => {
-                    console.log(5555555);
+                .catch((err) => { 
                 });
 
             setLoading({

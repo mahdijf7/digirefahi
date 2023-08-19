@@ -78,8 +78,7 @@ const AdminAddEmployeeDialog = ({ onClose, onSave }) => {
             .then((res) => {
                 onSave();
             })
-            .catch((err) => {
-                console.log(err.response.data.data, 987);
+            .catch((err) => { 
                 if (err?.response.status === 422) actions.setErrors(err.response.data.data);
             });
         setLoading({ save: false });

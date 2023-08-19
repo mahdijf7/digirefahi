@@ -63,7 +63,7 @@ const BannerTableDetail = ({
     //         link.click();
 
     //         URL.revokeObjectURL(url);
-    //         console.log(url);
+    
     //     } catch (error) {
     //         console.error('Error downloading image:', error);
     //     }

@@ -118,7 +118,7 @@ function EmployeeInfoDialogUserInfo({ employeeId, onClose, onSave }) {
                     setUserData(temp);
                 })
                 .catch((err) => {
-                    console.log(err);
+                
                 });
             setLoading({ ...loading, initial: false });
         })();

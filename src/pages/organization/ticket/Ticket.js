@@ -116,8 +116,7 @@ const Ticket = () => {
                     setMessages(res.data.data.messages);
                     // setBreadCrumbLinks([...breadCrumbLinks, { title: res.data.data.name }]);
                 })
-                .catch((err) => {
-                    console.log(5555555);
+                .catch((err) => { 
                 });
 
             setLoading({
@@ -136,7 +135,7 @@ const Ticket = () => {
     }, []);
 
     return (
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: `جزئیات تیکت ${ticket?.id || ''}` }}>
             <DLoadingWrapper loading={loading.initial}>
                 <Breadcrumb links={breadCrumbLinks} />
 

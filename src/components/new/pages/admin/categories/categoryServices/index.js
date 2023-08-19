@@ -47,7 +47,7 @@ const CategoryServices = ({ category }, ref) => {
                     setLoading({ initial: false, refresh: false });
                 })
                 .catch((err) => {
-                    console.log('error occured!');
+                  
                 });
         }
     };

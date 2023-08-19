@@ -190,7 +190,7 @@ const Dashboard = () => {
                                                                 justifyContent: 'center',
                                                                 mt: '18px',
                                                             }}>
-                                                            <Typography>{dashboard.share_rate ? +dashboard.share_rate.toFixed(0) : 0}</Typography>
+                                                            <Typography>{dashboard.share_rate ? +dashboard.share_rate.toFixed(0) : 0}%</Typography>
                                                             <Typography sx={{ color: 'rgba(0, 0, 0, 0.6)', fontSize: '12px' }}>
                                                                 نرخ مشارکت{' '}
                                                             </Typography>

@@ -47,8 +47,7 @@ const Allocation = ({}) => {
     const setEmployeeSelectionHandler = (data) => {
         setEmployeeSelection((prev) => {
             return { ...prev, ...data };
-        });
-        console.log(data, 987);
+        }); 
     };
     const noEmployeeWaSelected = () => {
         if (employeeSelection.selectAll && employeeSelection.count === 0) return true;
@@ -73,7 +72,7 @@ const Allocation = ({}) => {
         return account?.wallet && sumOfAssignedCredits > account.wallet.remain;
     };
     const filter = async (values) => {
-        console.log(employeeSelection, 123);
+    
 
         let errorMessage = false;
         // atleast one of the employees should be selected
@@ -111,7 +110,7 @@ const Allocation = ({}) => {
     };
 
     return (
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: 'تخصیص رفاهی' }}>
             <Breadcrumb links={breadCrumbLinks} />
 
             <OrgAllocateEmployeeSelection onEmployeeToggled={setEmployeeSelectionHandler} />

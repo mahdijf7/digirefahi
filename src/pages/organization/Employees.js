@@ -141,8 +141,7 @@ const Employees = () => {
                 link.click();
                 link.remove();
             })
-            .catch((err) => {
-                console.log(5555555);
+            .catch((err) => { 
             });
 
         setLoading({ ...loading, excel: false });
@@ -180,7 +179,7 @@ const Employees = () => {
     }, [filters]);
 
     return (
-        <DashboardCard pt="2rem" sx={styleCard}>
+        <DashboardCard pt="2rem" sx={styleCard} meta={{ title: 'مدیریت کارمندان' }}>
             <Breadcrumb links={breadCrumbLinks} />
             <DBox className={loading.refresh && 'box--isLoading'} sx={{ mt: '2rem', p: '26px 29px' }}>
                 <DLoadingWrapper loading={loading.initial}>

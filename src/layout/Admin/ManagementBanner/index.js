@@ -134,7 +134,7 @@ function ManagmentBanner(props) {
     }, [filters]);
 
     return (
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: 'مدیریت بنرها' }}>
             <Breadcrumb links={breadCrumbLinks} />
 
             <DBox sx={{ p: '24px 30px 36px 30px', mt: '22px' }}>

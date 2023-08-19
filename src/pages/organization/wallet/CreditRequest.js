@@ -76,8 +76,7 @@ const CreditRequest = ({onClose, requestId, onSave}) => {
             refresh: true,
         });
         await OrganizationService.getRequest(requestId)
-            .then((res) => {
-                console.log("res", res)
+            .then((res) => { 
                 setRequest(res.data.data)
             })
             .catch((err) => {

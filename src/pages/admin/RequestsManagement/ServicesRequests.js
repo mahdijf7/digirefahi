@@ -103,7 +103,7 @@ const ServicesRequests = () => {
     }, [filters]);
 
     return (
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: 'درخواست خدمت سازمانی' }}>
             <Breadcrumb links={breadCrumbLinks} />
 
             <DBox className={loading.page && 'box--isLoading'} sx={{ mt: '2rem', p: '26px 29px' }}>

@@ -22,9 +22,10 @@ const SidebarOrgSummary = () => {
     );
     return (
         <Box sx={{ display: 'grid' }}>
-            <Box sx={{ alignItems: 'center' }} height="70px" className="flex">
+            {logo && <Box sx={{ alignItems: 'center' }} height="70px" className="flex">
                 <img src={`${process.env.REACT_APP_STORAGE_URL}/${logo}`} style={{ maxWidth: '100%', maxHeight: '70px' }} />
-            </Box>
+            </Box>}
+             
             <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px', mt: '24px' }}>
                 <Box sx={{ display: 'grid' }}>
                     <StyledTooltip placement="left" title={name}>

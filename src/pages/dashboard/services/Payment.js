@@ -19,7 +19,7 @@ import { LoadingButton } from '@mui/lab';
 const EmployeeServiceDetail = () => {
     const navigate = useNavigate();
     let [searchParams] = useSearchParams();
-    console.log(searchParams, 123);
+ 
     const { serviceId } = useParams();
     const [loading, setLoading] = useState({ initial: true, pay: false });
     const [factor, setFactor] = useState(false);
@@ -69,8 +69,7 @@ const EmployeeServiceDetail = () => {
                     setFactor(res.data.data);
                     setBreadCrumbLinks([...breadCrumbLinks, { title: `خدمت ${res.data.data.service.name}` }]);
                 })
-                .catch((err) => {
-                    console.log(5555555);
+                .catch((err) => { 
                 });
 
             setLoading({

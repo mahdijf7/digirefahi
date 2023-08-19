@@ -28,7 +28,7 @@ function ProfilePassAdmin({ setIsStepOne }) {
     nationalCode: '',
   };
   const handleSubmit = async (values) => {
-    console.log(values, 11111);
+   
     // activeStep === steps.length - 1 ? 'Finish' : 'Next';
   };
   const linkData = [

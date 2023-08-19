@@ -7,7 +7,7 @@ import ChartContext from '../chart-context';
 const ChartEmployeesHeader = ({}) => {
     const { selectedNode } = useContext(ChartContext);
 
-    console.log(selectedNode);
+   
     return (
         <Box sx={{ mt: '36px',mb: '30px', borderBottom: '1px solid #EEEEEE', borderTop: '1px solid rgba(0, 0, 0, 0.2)', padding: '17px 32px' }}>
             <Typography sx={{ fontWeight: 600 }}>

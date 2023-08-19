@@ -29,7 +29,7 @@ const EmpDashboardAdminBanners = () => {
                     setBanners(res.data.data);
                 })
                 .catch((err) => {
-                    console.log('error occured!');
+               
                 });
 
             setLoading({ initial: false });
