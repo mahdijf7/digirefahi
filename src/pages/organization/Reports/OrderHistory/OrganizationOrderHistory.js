@@ -46,7 +46,7 @@ function OrganizationOrderHistory(props) {
         { title: 'کد ملی' },
         { title: 'نام سازمان' },
         { title: 'مبلغ (تومان)' },
-        { title: 'ناریخ ثبت درخواست' },
+        { title: 'تاریخ ثبت درخواست' },
         { title: 'جزئیات' },
     ];
 
