@@ -116,8 +116,7 @@ const Ticket = () => {
                     setMessages(res.data.data.messages);
                     // setBreadCrumbLinks([...breadCrumbLinks, { title: res.data.data.name }]);
                 })
-                .catch((err) => {
-                    console.log(5555555);
+                .catch((err) => { 
                 });
 
             setLoading({

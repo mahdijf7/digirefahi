@@ -72,11 +72,11 @@ const WalletService = () => {
             .getCompany(companyId, tab)
             .then((res) => {
                 setWallet(res.data.data);
-                console.log(res.data, 'GETTING  ', 1111111111);
+             
                 setLoading(false);
             })
             .catch((err) => {
-                console.log(err);
+            
                 setLoading(false);
             });
     };

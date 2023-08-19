@@ -59,7 +59,7 @@ const Employees = () => {
                 });
             })
             .catch((err) => {
-                console.log('error occured!');
+       
             });
     };
     const searchEmployees = (values, actions) => {
@@ -88,7 +88,7 @@ const Employees = () => {
                 link.remove();
             })
             .catch((err) => {
-                console.log(5555555);
+   
             });
 
         setLoading({ ...loading, excel: false });

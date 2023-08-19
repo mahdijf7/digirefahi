@@ -36,17 +36,18 @@
         "react-number-format": "^5.2.2",
         "react-player": "^2.12.0",
         "react-qr-code": "^2.0.11",
+        "react-quill": "^2.0.0",
         "react-redux": "^8.0.5",
         "react-router-dom": "^6.4.3",
         "react-scripts": "5.0.1",
         "react-transition-group": "4.4.2",
+        "react-window": "^1.8.9",
         "recharts": "^2.1.16",
         "redux-thunk": "^2.4.2",
         "styled-components": "^5.3.6",
         "swiper": "^8.4.6",
         "web-vitals": "^2.1.4",
-        "yup": "^0.32.11",
-        "react-quill": "^2.0.0"
+        "yup": "^0.32.11"
     },
     "devDependencies": {
         "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
@@ -63,10 +64,7 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "svg": "svgr -d src/assets/icone/svg src/assets/icone",
-        "build:development": "env-cmd -f .env.development react-scripts build",
-        "build:demo": "env-cmd -f .env.demo react-scripts build",
-        "build:production": "env-cmd -f .env.production react-scripts build"
+        "svg": "svgr -d src/assets/icone/svg src/assets/icone"
     },
     "eslintConfig": {
         "extends": [

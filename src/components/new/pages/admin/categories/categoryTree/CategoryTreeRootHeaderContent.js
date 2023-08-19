@@ -162,7 +162,7 @@ const CategoryTreeRootHeaderContent = ({
                     onDelete(root);
                 })
                 .catch((err) => {
-                    console.log('error occured!');
+                
                 });
         }
     };

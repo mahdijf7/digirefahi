@@ -50,7 +50,7 @@ const Chart = ({}) => {
                 link.remove();
             })
             .catch((err) => {
-                console.log(5555555);
+           
             });
 
         setLoading({ ...loading, excel: false });
@@ -80,7 +80,7 @@ const Chart = ({}) => {
                     setLoading({ refresh: false, initial: false });
                 })
                 .catch((err) => {
-                    console.log('error occured!', err);
+                
                 });
         };
 

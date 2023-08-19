@@ -137,7 +137,7 @@ function SupplierManagement(props) {
     };
 
     return (
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: 'مدیریت تامین‌کنندگان' }}>
             <Breadcrumb links={breadCrumbLinks} />
             <DBox sx={{ mt: '2rem', p: '26px 29px' }} className={loading.refresh && 'box--isLoading'}>
                 <DLoadingWrapper loading={loading.initial}>

@@ -244,7 +244,7 @@ const Groups = ({}) => {
 const breadCrumbLinks = [
     { path: '/app/organization/dashboard/', title: 'پیشخوان' },
     {
-        path: '/app/organization/groups/',
+        path: '/app/organization/manage/groups/',
         title: 'مدیریت سازمان ',
     },
     { title: 'مدیریت گروه‌ها' },

@@ -62,7 +62,7 @@ const SearchOrderDetail = ({onClose, searchCode, searchOrders, showOrderDetail, 
                     setSelectedItems(selectCodes)
                 })
                 .catch((err) => {
-                    console.log(5555555);
+                 
                 });
 
             setLoading({
@@ -92,7 +92,7 @@ const SearchOrderDetail = ({onClose, searchCode, searchOrders, showOrderDetail, 
 
             })
             .catch((err) => {
-                console.log(5555555);
+                
             });
     }
 

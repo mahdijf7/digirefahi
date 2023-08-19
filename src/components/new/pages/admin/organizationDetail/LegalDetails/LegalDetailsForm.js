@@ -38,7 +38,7 @@ function LegalDetailsForm(props) {
         postal_code: yup.string().nullable().min(10, 'کدپستی معتبر نیست').max(10, 'کدپستی معتبر نیست'),
     });
 
-    console.log(companyData.logo);
+ 
 
     const [logo, setLogo] = useState(null);
     const rowTwoCityRef = useRef(null);

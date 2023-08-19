@@ -91,7 +91,7 @@ const CreditRequest = ({onClose, requestId, onSave,onRefresh}) => {
                 onSave();
             })
             .catch((err) => {
-                console.log('error occured!');
+           
             });
     };
 
@@ -111,7 +111,7 @@ const CreditRequest = ({onClose, requestId, onSave,onRefresh}) => {
     };
 
     const changeStatusRequest = async (status) => {
-        console.log("values",values)
+      
         const formData = new FormData();
         formData.append('_method', 'PUT');
         formData.append('status', status);
@@ -119,7 +119,7 @@ const CreditRequest = ({onClose, requestId, onSave,onRefresh}) => {
         if (values?.file) formData.append('archive_file', values.file);
         await adminService.changeStatusRequest(formData,requestId)
             .then((res) => {
-                console.log("res", res)
+              
                 closeAcceptDialog();
                 closeRejectDialog();
                 onClose();
@@ -158,7 +158,7 @@ const CreditRequest = ({onClose, requestId, onSave,onRefresh}) => {
             uploaded: true,
         });
 
-        console.log(file);
+     
     };
     const getRequest = async () => {
         if (loading.refresh) return
@@ -168,7 +168,7 @@ const CreditRequest = ({onClose, requestId, onSave,onRefresh}) => {
         });
         await adminService.getCreditRequest(requestId)
             .then((res) => {
-                console.log("res", res)
+              
                 setRequest(res.data.data)
             })
             .catch((err) => {
@@ -187,7 +187,7 @@ const CreditRequest = ({onClose, requestId, onSave,onRefresh}) => {
 
 
     const handleSubmit = async (values) => {
-        console.log("handleSubmit",values)
+     
         // if (loading.save) return;
         // setLoading({ save: true });
         // const formData = new FormData();
@@ -198,7 +198,7 @@ const CreditRequest = ({onClose, requestId, onSave,onRefresh}) => {
         // await OrganizationService
         //     .createCreditRequest(formData)
         //     .then((res) => {
-        //         console.log("createCreditRequest",res.data)
+     
         //         setSnackBarData({
         //             show: true,
         //             data: {

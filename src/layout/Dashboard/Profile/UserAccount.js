@@ -36,8 +36,7 @@ function UserAcount(props) {
         values.password && fd.append('password', values.password);
         values.verify_password && fd.append('verify_password', values.verify_password);
         postData(actions);
-
-        console.log(values);
+ 
     };
 
     const postData = async (actions) => {

@@ -110,7 +110,7 @@ const Companies = () => {
                 link.remove();
             })
             .catch((err) => {
-                console.log(5555555);
+           
             });
 
         setLoading({ ...loading, excel: false });
@@ -142,7 +142,7 @@ const Companies = () => {
                     setTotalPage(res.data.meta.last_page);
                 })
                 .catch((err) => {
-                    console.log('error occured!');
+                 
                 });
             setLoading({ initial: false, refresh: false });
         })();
@@ -150,7 +150,7 @@ const Companies = () => {
         return () => controller.abort();
     }, [filters]);
     return (
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: 'مدیریت سازمان‌ها' }}>
             <Breadcrumb links={breadCrumbLinks} />
 
             <DBox sx={{ marginTop: '2rem', padding: '30px' }} className={loading.refresh && 'box--isLoading'}>

@@ -107,9 +107,7 @@ const Ticket = () => {
             doNoting: false,
             completed: false,
             uploaded: true,
-        });
-
-        console.log(file);
+        }); 
     };
 
     const getTicket=()=>{
@@ -123,8 +121,7 @@ const Ticket = () => {
                     setMessages(res.data.data.messages);
                     // setBreadCrumbLinks([...breadCrumbLinks, { title: res.data.data.name }]);
                 })
-                .catch((err) => {
-                    console.log(5555555);
+                .catch((err) => { 
                 });
 
             setLoading({

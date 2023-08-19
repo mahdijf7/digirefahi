@@ -154,8 +154,7 @@ const ServicesRequests = () => {
                     setServices(res.data.data);
                     setTotalPage(res.data.meta.last_page);
                 })
-                .catch((err) => {
-                    console.log(5555555);
+                .catch((err) => { 
                 });
 
             setLoading({

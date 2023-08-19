@@ -100,7 +100,7 @@ const AdminCreditRequests = () => {
     }, [filters]);
 
     return (
-        <DashboardCard pt="2rem" sx={styleCard}>
+        <DashboardCard pt="2rem" sx={styleCard} meta={{ title: 'درخواست افزایش اعتبار' }}>
             <Breadcrumb links={breadCrumbLinks} />
 
             <DBox sx={{ mt: '2rem', p: '26px 29px' }}>

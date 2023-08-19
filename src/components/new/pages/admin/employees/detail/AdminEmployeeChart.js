@@ -41,7 +41,7 @@ const AdminEmployeeChart = ({ employeeId, onClose, onSave }) => {
             values.groups.map((item, index) => queryParams.append(`group_ides[${index}]`, item.id));
         }
 
-        console.log('step 1', values.chart);
+     
         await adminService
             .update(`employees/${employeeId}?${queryParams.toString()}`)
             .then((res) => {
@@ -82,7 +82,7 @@ const AdminEmployeeChart = ({ employeeId, onClose, onSave }) => {
                     setStatus(() => temp);
                 })
                 .catch((err) => {
-                    console.log(err, 123);
+        
                 });
 
             setLoading({

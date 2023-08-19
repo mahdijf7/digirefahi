@@ -45,7 +45,7 @@ const Info = () => {
     };
 
     return (
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: 'ویرایش سازمان' }}>
             <Breadcrumb links={breadCrumbLinks} />
 
             <Box sx={boxStyles} position="relative">

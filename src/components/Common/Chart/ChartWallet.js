@@ -14,7 +14,7 @@ function ChartWallet({ simple, wallet, loading, child }) {
     const themeDefault = useTheme();
     const { t } = useTranslation();
 
-    console.log(child);
+ 
 
     const data = [{ value: wallet?.final_use }, { value: wallet?.final_remain }];
 

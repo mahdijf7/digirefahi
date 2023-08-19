@@ -22,7 +22,7 @@ function ModalServiceList({ snackBarData, setSnackBarData, open, page, setOpen, 
         editServiceList(selectedService?.id, formData);
     };
 
-    console.log(selectedService, 'getting the selected list ', 45345353);
+ 
 
     const editServiceList = async (id, value) => {
  

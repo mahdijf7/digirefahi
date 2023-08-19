@@ -82,7 +82,7 @@ function Account(props) {
                     setAccount({ username: res.data.data.username });
                 })
                 .catch((err) => {
-                    console.log(err);
+                   
                 });
             setLoading({ ...loading, initial: false });
         })();

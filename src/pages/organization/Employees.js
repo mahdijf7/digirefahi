@@ -141,8 +141,7 @@ const Employees = () => {
                 link.click();
                 link.remove();
             })
-            .catch((err) => {
-                console.log(5555555);
+            .catch((err) => { 
             });
 
         setLoading({ ...loading, excel: false });

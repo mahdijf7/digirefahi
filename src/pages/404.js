@@ -1,4 +1,4 @@
-import Index from '../../layout/404';
+import Index from '../layout/404';
 const NotFound = () => {
   return <Index />;
 };
