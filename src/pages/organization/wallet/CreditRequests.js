@@ -204,7 +204,7 @@ const CreditRequests = () => {
     };
 
     return (
-        <DashboardCard pt="2rem" sx={styleCard}>
+        <DashboardCard pt="2rem" sx={styleCard} meta={{ title: 'درخواست افزایش اعتبار' }}>
             <Breadcrumb links={breadCrumbLinks} />
             {showDeleteDialog && (
                 <DDeleteDialog loading={loading.delete} title="درخواست" onDelete={deleteRequest} onClose={closeDeleteDialog} />

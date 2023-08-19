@@ -90,7 +90,7 @@ function OrganizationOrderHistory(props) {
         getTransactions();
     }, [filters]);
     return (
-        <DashboardCard pt="2rem" sx={styleCard}>
+        <DashboardCard pt="2rem" sx={styleCard} meta={{ title: 'تاریخچه سفارشات' }}>
             <Breadcrumb links={breadCrumbLinks} />
 
             <DLoadingWrapper loading={loading.initial}>

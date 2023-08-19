@@ -42,7 +42,7 @@ const Chart = ({}) => {
     }, [selectedNode]);
 
     return (
-        <DashboardCard pt="24px">
+        <DashboardCard pt="24px" meta={{ title: 'مدیریت چارت سازمانی' }}>
             <Breadcrumb links={breadCrumbLinks} />
 
             <DLoadingWrapper loading={loading.initial}>

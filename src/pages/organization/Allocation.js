@@ -110,7 +110,7 @@ const Allocation = ({}) => {
     };
 
     return (
-        <DashboardCard pt="2rem">
+        <DashboardCard pt="2rem" meta={{ title: 'تخصیص رفاهی' }}>
             <Breadcrumb links={breadCrumbLinks} />
 
             <OrgAllocateEmployeeSelection onEmployeeToggled={setEmployeeSelectionHandler} />
