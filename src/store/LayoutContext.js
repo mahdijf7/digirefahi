@@ -5,28 +5,26 @@ import { useMediaQuery, useTheme } from '@mui/material';
 const LayoutStateContext = createContext();
 
 function LayoutProvider({ children }) {
-  const {
-    i18n: { dir, language },
-  } = useTranslation();
-  const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
-  const [isSidebarOpened, setIsSidebarOpened] = useState(isSmall ? false : true);
+    const {
+        i18n: { dir, language },
+    } = useTranslation();
+    const theme = useTheme();
+    const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
+    const [isSidebarOpened, setIsSidebarOpened] = useState(isSmall ? false : true);
 
-  return (
-    <div dir={dir(language)}>
-      <LayoutStateContext.Provider value={{ isSidebarOpened, setIsSidebarOpened }}>
-        {children}
-      </LayoutStateContext.Provider>
-    </div>
-  );
+    return (
+        <div dir={dir(language)}>
+            <LayoutStateContext.Provider value={{ isSidebarOpened, setIsSidebarOpened }}>{children}</LayoutStateContext.Provider>
+        </div>
+    );
 }
 
 function useLayoutState() {
-  const context = useContext(LayoutStateContext);
-  if (context === undefined) {
-    throw new Error('useUserState must be used within a UserProvider');
-  }
-  return context;
+    const context = useContext(LayoutStateContext);
+    if (context === undefined) {
+        throw new Error('useUserState must be used within a UserProvider');
+    }
+    return context;
 }
 
 export { LayoutProvider, useLayoutState };

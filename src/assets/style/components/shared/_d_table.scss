@@ -1,6 +1,6 @@
 .d-table-wrapper {
     box-shadow: none;
-    overflow-x: unset!important;
+    overflow-x: unset !important;
 }
 .d-table {
     border-spacing: 0;
@@ -32,20 +32,19 @@
     border-bottom: none !important;
 }
 
-
-.chart-label-22 tspan{
+.chart-label-22 tspan {
     font-size: 22px;
 }
-.chart-label-14 tspan{
+.chart-label-14 tspan {
     font-size: 14px;
 }
-.chart-label-bold tspan{
+.chart-label-bold tspan {
     font-weight: 600;
 }
-.box--isLoading{
+.box--isLoading {
     position: relative;
     z-index: 1;
-    &::after{
+    &::after {
         content: '';
         position: absolute;
         top: 0;

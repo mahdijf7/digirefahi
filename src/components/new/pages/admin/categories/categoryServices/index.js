@@ -41,21 +41,19 @@ const CategoryServices = ({ category }, ref) => {
 
             await adminService
                 .getServices(queryString)
-                .then((res) => { 
+                .then((res) => {
                     setServices(res.data.data);
                     setTotalPage(res.data.meta.last_page);
                     setLoading({ initial: false, refresh: false });
                 })
-                .catch((err) => {
-                  
-                });
+                .catch((err) => {});
         }
     };
 
     useEffect(() => {
         getServices();
     }, [filters]);
- 
+
     return (
         <DBox sx={{ marginTop: '32px' }}>
             <Box
